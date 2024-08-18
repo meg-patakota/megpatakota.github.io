@@ -26,6 +26,69 @@ const projects = [
     }
 ];
 
+// Animated Background
+function createAnimatedBackground() {
+    const canvas = document.getElementById('background-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 5 + 1;
+            this.speedX = Math.random() * 3 - 1.5;
+            this.speedY = Math.random() * 3 - 1.5;
+            this.color = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (this.size > 0.2) this.size -= 0.1;
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function handleParticles() {
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+
+            if (particles[i].size <= 0.2) {
+                particles.splice(i, 1);
+                i--;
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (particles.length < 100) {
+            particles.push(new Particle());
+        }
+        handleParticles();
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
 // Hero Visualization
 function createHeroVisualization() {
     const width = document.getElementById('hero-visualization').clientWidth;
@@ -52,7 +115,7 @@ function createHeroVisualization() {
             .attr('r', d => d.radius)
             .attr('cx', d => d.x)
             .attr('cy', d => d.y)
-            .attr('fill', () => d3.schemeCategory10[Math.floor(Math.random() * 10)]);
+            .attr('fill', () => d3.interpolateRainbow(Math.random()));
     }
 }
 
@@ -63,88 +126,4 @@ function createSkillsChart() {
     const height = 400 - margin.top - margin.bottom;
 
     const svg = d3.select('#skills-chart')
-        .append('svg')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
-        .append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    const x = d3.scaleLinear()
-        .domain([0, 100])
-        .range([0, width]);
-
-    const y = d3.scaleBand()
-        .range([0, height])
-        .domain(skills.map(d => d.name))
-        .padding(.1);
-
-    svg.selectAll('myRect')
-        .data(skills)
-        .join('rect')
-        .attr('x', x(0))
-        .attr('y', d => y(d.name))
-        .attr('width', d => x(d.level))
-        .attr('height', y.bandwidth())
-        .attr('fill', '#8C1C13');
-
-    svg.append('g')
-        .call(d3.axisLeft(y));
-
-    svg.append('g')
-        .attr('transform', `translate(0, ${height})`)
-        .call(d3.axisBottom(x));
-}
-
-// Populate projects
-function populateProjects() {
-    const projectsGrid = document.getElementById('projects-grid');
-    projects.forEach(project => {
-        const div = document.createElement('div');
-        div.classList.add('project-item');
-        div.innerHTML = `
-            <h3>${project.name}</h3>
-            <p>${project.description}</p>
-            <p><strong>Tech Stack:</strong> ${project.techStack.join(', ')}</p>
-        `;
-        projectsGrid.appendChild(div);
-    });
-}
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Interactive header
-const header = document.querySelector('header');
-let lastScrollTop = 0;
-
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop) {
-        header.style.transform = 'translateY(-100%)';
-    } else {
-        header.style.transform = 'translateY(0)';
-    }
-    lastScrollTop = scrollTop;
-});
-
-// Form submission (replace with your own logic)
-const form = document.getElementById('contact-form');
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    form.reset();
-});
-
-// Initialize visualizations and populate content
-document.addEventListener('DOMContentLoaded', () => {
-    createHeroVisualization();
-    createSkillsChart();
-    populateProjects();
-});
+        .append('
