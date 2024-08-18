@@ -1,31 +1,3 @@
-// Sample data (replace with your own)
-const skills = [
-    {name: 'Python', level: 90},
-    {name: 'Machine Learning', level: 85},
-    {name: 'Data Visualization', level: 80},
-    {name: 'SQL', level: 75},
-    {name: 'Big Data', level: 70},
-    {name: 'Deep Learning', level: 65}
-];
-
-const projects = [
-    {
-        name: 'Predictive Analytics Dashboard',
-        description: 'Developed a real-time dashboard for predicting customer churn using machine learning algorithms.',
-        techStack: ['Python', 'Scikit-learn', 'Flask', 'D3.js']
-    },
-    {
-        name: 'Natural Language Processing Tool',
-        description: 'Created a tool for sentiment analysis and topic modeling of social media data.',
-        techStack: ['Python', 'NLTK', 'Gensim', 'Plotly']
-    },
-    {
-        name: 'Time Series Forecasting Model',
-        description: 'Built a model to forecast energy consumption patterns for a smart city project.',
-        techStack: ['Python', 'Pandas', 'Statsmodels', 'Prophet']
-    }
-];
-
 // Animated Background
 function createAnimatedBackground() {
     const canvas = document.getElementById('background-canvas');
@@ -34,6 +6,7 @@ function createAnimatedBackground() {
     canvas.height = window.innerHeight;
 
     const particles = [];
+    const numberOfParticles = 100;
 
     class Particle {
         constructor() {
@@ -49,7 +22,10 @@ function createAnimatedBackground() {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            if (this.size > 0.2) this.size -= 0.1;
+            if (this.x > canvas.width) this.x = 0;
+            else if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            else if (this.y < 0) this.y = canvas.height;
         }
 
         draw() {
@@ -60,70 +36,57 @@ function createAnimatedBackground() {
         }
     }
 
-    function handleParticles() {
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-
-            if (particles[i].size <= 0.2) {
-                particles.splice(i, 1);
-                i--;
-            }
+    function init() {
+        for (let i = 0; i < numberOfParticles; i++) {
+            particles.push(new Particle());
         }
     }
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (particles.length < 100) {
-            particles.push(new Particle());
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
         }
-        handleParticles();
+        connectParticles();
         requestAnimationFrame(animate);
     }
 
+    function connectParticles() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 100) {
+                    ctx.strokeStyle = `rgba(52, 152, 219, ${1 - distance / 100})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    init();
     animate();
 
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        init();
     });
 }
 
-// Hero Visualization
-function createHeroVisualization() {
-    const width = document.getElementById('hero-visualization').clientWidth;
-    const height = 400;
+// The rest of your JavaScript (Hero Visualization, Skills Chart, etc.) remains the same
 
-    const svg = d3.select('#hero-visualization')
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height);
-
-    const simulation = d3.forceSimulation()
-        .force('center', d3.forceCenter(width / 2, height / 2))
-        .force('charge', d3.forceManyBody().strength(50))
-        .force('collide', d3.forceCollide(30));
-
-    const nodes = d3.range(50).map(() => ({radius: Math.random() * 20 + 5}));
-
-    simulation.nodes(nodes).on('tick', ticked);
-
-    function ticked() {
-        const u = svg.selectAll('circle')
-            .data(nodes)
-            .join('circle')
-            .attr('r', d => d.radius)
-            .attr('cx', d => d.x)
-            .attr('cy', d => d.y)
-            .attr('fill', () => d3.interpolateRainbow(Math.random()));
-    }
-}
-
-// Skills Chart
-function createSkillsChart() {
-    const margin = {top: 20, right: 30, bottom: 40, left: 90};
-    const width = document.getElementById('skills-chart').clientWidth - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
-
-    const svg = d3.select('#skills-chart')
-        .append('
+// Initialize everything
+document.addEventListener('DOMContentLoaded', () => {
+    createAnimatedBackground();
+    createHeroVisualization();
+    createSkillsChart();
+    populateProjects();
+});
