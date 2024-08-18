@@ -6,10 +6,26 @@
     <title>Meg Patakota - Data Scientist Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        #hero {
+            position: relative;
+            height: 90vh;
+            overflow: hidden;
+        }
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="hero-canvas"></canvas>
-    
     <header>
         <nav>
             <ul>
@@ -19,20 +35,41 @@
             </ul>
         </nav>
     </header>
-
     <main>
         <section id="hero">
+            <canvas id="hero-canvas"></canvas>
             <div class="hero-content">
                 <h1>Meg Patakota</h1>
                 <h2>Data Scientist & AI Enthusiast</h2>
                 <p>Transforming raw data into actionable insights</p>
                 <button id="cta-button">Explore My Work</button>
-                <button id="cta-button">Connect with me</button>
+                <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer">
+                    <button id="cta-button">Connect with me</button>
+                </a>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-heading">Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <h3>CLARA: CLimate Accountability Research Assistant</h3>
+                    <p>Uses the power of AI to support in climate research. Developed in collaboration with University of Oxford.</p>
+                    <a href="https://clara-research.com" target="_blank" rel="noopener noreferrer">
+                        <button id="cta-button">CLARA</button>
+                    </a>
+                    <p>Register & explore CLARA today! <br>
+                    The tool for academics, litigators and climate enthusiasts.</p>
+                </div>
+                <!-- <div class="project-card">
+                    <h3>Sentiment Analysis Tool</h3>
+                    <p>Created an NLP-based tool for real-time social media sentiment analysis</p>
+                </div> -->
             </div>
         </section>
 
         <section id="skills">
-            <h2>Skills</h2>
+            <h2 class="section-heading">Skills</h2>
             <div class="skills-container">
                 <div class="skill-card">
                     <h3>Machine Learning</h3>
@@ -53,189 +90,10 @@
             </div>
         </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <h3>Customer Churn Prediction</h3>
-                    <p>Developed a model to predict customer churn with 95% accuracy</p>
-                </div>
-                <div class="project-card">
-                    <h3>Sentiment Analysis Tool</h3>
-                    <p>Created an NLP-based tool for real-time social media sentiment analysis</p>
-                </div>
-                <div class="project-card">
-                    <h3>Predictive Maintenance System</h3>
-                    <p>Implemented an IoT-based system for predicting equipment failures</p>
-                </div>
-            </div>
-        </section>
-        
-
-        <section id="contact">
-            <h2>Contact</h2>
-        </section>
-        
-        
     </main>
-
     <footer>
         <p>&copy; 2024 Meg Patakota. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Animated Background with Data Elements
-        function createAnimatedBackground() {
-            const canvas = document.getElementById('hero-canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const dataElements = [];
-            const numberOfElements = 50;
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const maxRadius = Math.min(canvas.width, canvas.height) / 2;
-            const minRadius = maxRadius / 3;
-
-            let mouseX = 0;
-            let mouseY = 0;
-
-            class DataElement {
-                constructor() {
-                    this.angle = Math.random() * Math.PI * 2;
-                    this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
-                    this.size = Math.random() * 20 + 10;
-                    this.speed = 0.0005 + Math.random() * 0.0005; // Reduced speed
-                    this.type = Math.floor(Math.random() * 3); // 0: number, 1: graph, 2: symbol
-                    this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
-                    this.value = Math.floor(Math.random() * 100);
-                    this.direction = Math.random() < 0.5 ? 1 : -1; // Clockwise or counterclockwise
-                }
-
-                update() {
-                    this.angle += this.speed * this.direction;
-                    
-                    // Add mouse interaction
-                    const dx = mouseX - centerX;
-                    const dy = mouseY - centerY;
-                    const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
-                    const maxDistance = Math.min(canvas.width, canvas.height) / 2;
-                    const influenceFactor = Math.min(1, distanceFromCenter / maxDistance) * 0.05; // Reduced influence
-                    
-                    this.x = centerX + Math.cos(this.angle) * this.radius + dx * influenceFactor * 0.1;
-                    this.y = centerY + Math.sin(this.angle) * this.radius + dy * influenceFactor * 0.1;
-                    
-                    // Gradually move towards the center
-                    this.radius -= 0.05;
-                    if (this.radius < minRadius) {
-                        this.radius = maxRadius;
-                    }
-                }
-
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.font = `${this.size}px Arial`;
-                    
-                    if (this.type === 0) {
-                        ctx.fillText(this.value, this.x, this.y);
-                    } else if (this.type === 1) {
-                        this.drawGraph();
-                    } else {
-                        this.drawSymbol();
-                    }
-                }
-
-                drawGraph() {
-                    const points = [];
-                    for (let i = 0; i < 5; i++) {
-                        points.push({
-                            x: this.x + i * 10,
-                            y: this.y + Math.random() * 20 - 10
-                        });
-                    }
-
-                    ctx.beginPath();
-                    ctx.moveTo(points[0].x, points[0].y);
-                    for (let i = 1; i < points.length; i++) {
-                        ctx.lineTo(points[i].x, points[i].y);
-                    }
-                    ctx.strokeStyle = this.color;
-                    ctx.stroke();
-                }
-
-                drawSymbol() {
-                    const symbols = ['Σ', 'μ', 'σ', 'Δ', '∫'];
-                    ctx.fillText(symbols[Math.floor(Math.random() * symbols.length)], this.x, this.y);
-                }
-            }
-
-            function init() {
-                dataElements.length = 0;
-                for (let i = 0; i < numberOfElements; i++) {
-                    dataElements.push(new DataElement());
-                }
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < dataElements.length; i++) {
-                    dataElements[i].update();
-                    dataElements[i].draw();
-                }
-                requestAnimationFrame(animate);
-            }
-
-            init();
-            animate();
-
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                init();
-            });
-
-            document.addEventListener('mousemove', (event) => {
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-            });
-        }
-
-        // Interactive skills and projects
-        function createInteractiveElements() {
-            const skillCards = document.querySelectorAll('.skill-card');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            function addInteractivity(cards) {
-                cards.forEach(card => {
-                    card.addEventListener('mouseenter', () => {
-                        card.style.transform = 'scale(1.05) translateY(-10px)';
-                        card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
-                    });
-
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transform = 'scale(1) translateY(0)';
-                        card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                    });
-
-                    card.addEventListener('click', () => {
-                        card.classList.add('clicked');
-                        setTimeout(() => {
-                            card.classList.remove('clicked');
-                        }, 300);
-                    });
-                });
-            }
-
-            addInteractivity(skillCards);
-            addInteractivity(projectCards);
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', () => {
-            createAnimatedBackground();
-            createInteractiveElements();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

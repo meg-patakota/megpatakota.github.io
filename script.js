@@ -2,8 +2,15 @@
 function createAnimatedBackground() {
     const canvas = document.getElementById('hero-canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const heroSection = document.getElementById('hero');
+    
+    function resizeCanvas() {
+        canvas.width = heroSection.offsetWidth;
+        canvas.height = heroSection.offsetHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     const dataElements = [];
     const numberOfElements = 50;
@@ -20,27 +27,25 @@ function createAnimatedBackground() {
             this.angle = Math.random() * Math.PI * 2;
             this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
             this.size = Math.random() * 20 + 10;
-            this.speed = 0.0005 + Math.random() * 0.0005; // Reduced speed
-            this.type = Math.floor(Math.random() * 3); // 0: number, 1: graph, 2: symbol
+            this.speed = 0.0005 + Math.random() * 0.0005;
+            this.type = Math.floor(Math.random() * 3);
             this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
             this.value = Math.floor(Math.random() * 100);
-            this.direction = Math.random() < 0.5 ? 1 : -1; // Clockwise or counterclockwise
+            this.direction = Math.random() < 0.5 ? 1 : -1;
         }
 
         update() {
             this.angle += this.speed * this.direction;
             
-            // Add mouse interaction
             const dx = mouseX - centerX;
             const dy = mouseY - centerY;
             const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
             const maxDistance = Math.min(canvas.width, canvas.height) / 2;
-            const influenceFactor = Math.min(1, distanceFromCenter / maxDistance) * 0.05; // Reduced influence
+            const influenceFactor = Math.min(1, distanceFromCenter / maxDistance) * 0.1;
             
             this.x = centerX + Math.cos(this.angle) * this.radius + dx * influenceFactor * 0.1;
             this.y = centerY + Math.sin(this.angle) * this.radius + dy * influenceFactor * 0.1;
             
-            // Gradually move towards the center
             this.radius -= 0.05;
             if (this.radius < minRadius) {
                 this.radius = maxRadius;
@@ -79,7 +84,7 @@ function createAnimatedBackground() {
         }
 
         drawSymbol() {
-            const symbols = ['Σ', 'μ', 'σ', 'Δ', '∫'];
+            const symbols = ['Σ', 'μ', 'σ', 'Δ', '∫', '∞', 'θ', 'λ', '√', 'π'];
             ctx.fillText(symbols[Math.floor(Math.random() * symbols.length)], this.x, this.y);
         }
     }
@@ -104,14 +109,14 @@ function createAnimatedBackground() {
     animate();
 
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        resizeCanvas();
         init();
     });
 
-    document.addEventListener('mousemove', (event) => {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
+    heroSection.addEventListener('mousemove', (event) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = event.clientX - rect.left;
+        mouseY = event.clientY - rect.top;
     });
 }
 
