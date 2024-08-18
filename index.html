@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Professional Profile</title>
+    <title>Your Name - Data Scientist Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -20,28 +22,35 @@
 
     <main>
         <section id="hero">
-            <h1>Your Name</h1>
-            <p>Your Professional Title</p>
-            <button id="cta-button">Hire Me</button>
+            <div class="hero-content">
+                <h1>Your Name</h1>
+                <h2>Data Scientist & AI Enthusiast</h2>
+                <p>Transforming raw data into actionable insights</p>
+                <button id="cta-button">Explore My Work</button>
+            </div>
+            <div id="hero-visualization"></div>
         </section>
 
         <section id="about">
             <h2>About Me</h2>
-            <p>Your professional summary goes here.</p>
+            <div class="about-content">
+                <img src="your-profile-picture.jpg" alt="Your Name" class="profile-picture">
+                <p>Your professional summary goes here. Highlight your expertise in data science, machine learning, and any significant achievements or unique skills that set you apart.</p>
+            </div>
         </section>
 
         <section id="skills">
-            <h2>Skills</h2>
-            <ul id="skills-list"></ul>
+            <h2>Skills & Expertise</h2>
+            <div id="skills-chart"></div>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
+            <h2>Featured Projects</h2>
             <div id="projects-grid"></div>
         </section>
 
         <section id="contact">
-            <h2>Contact Me</h2>
+            <h2>Let's Connect</h2>
             <form id="contact-form">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
@@ -53,6 +62,11 @@
 
     <footer>
         <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">Twitter</a>
+        </div>
     </footer>
 
     <script src="script.js"></script>
