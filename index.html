@@ -1,103 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ... (previous head and body content remains the same) ... -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meg Patakota - Data Scientist Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2E1114;
+            --secondary-color: #501B1D;
+            --accent-color: #64485C;
+            --text-color: #333333;
+            --bg-color: #F5F5F5;
+            --highlight-color: #83677B;
+        }
 
-<script>
-    // Animated Background with Data Elements
-    function createAnimatedBackground() {
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        body {
+            font-family: 'Libre Baskerville', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
 
-        const dataElements = [];
-        const numberOfElements = 50;
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const maxRadius = Math.min(canvas.width, canvas.height) / 2;
-        const minRadius = maxRadius / 3;
+        #hero-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-        let mouseX = centerX;
-        let mouseY = centerY;
+        header {
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
 
-        class DataElement {
-            constructor() {
-                this.angle = Math.random() * Math.PI * 2;
-                this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
-                this.size = Math.random() * 20 + 10;
-                this.speed = 0.0005 + Math.random() * 0.0005; // Reduced speed
-                this.type = Math.floor(Math.random() * 3); // 0: number, 1: graph, 2: symbol
-                this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
-                this.value = Math.floor(Math.random() * 100);
-                this.direction = Math.random() < 0.5 ? 1 : -1; // Clockwise or counterclockwise
-                this.x = centerX + Math.cos(this.angle) * this.radius;
-                this.y = centerY + Math.sin(this.angle) * this.radius;
-                this.targetX = this.x;
-                this.targetY = this.y;
-            }
+        nav ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
 
-            update() {
-                this.angle += this.speed * this.direction;
-                
-                // Calculate target position
-                const dx = mouseX - centerX;
-                const dy = mouseY - centerY;
-                const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
-                const maxDistance = Math.min(canvas.width, canvas.height) / 2;
-                const influenceFactor = Math.min(1, distanceFromCenter / maxDistance) * 0.05; // Reduced influence
-                
-                this.targetX = centerX + Math.cos(this.angle) * this.radius + dx * influenceFactor;
-                this.targetY = centerY + Math.sin(this.angle) * this.radius + dy * influenceFactor;
-                
-                // Smooth movement towards target position
-                this.x += (this.targetX - this.x) * 0.05;
-                this.y += (this.targetY - this.y) * 0.05;
-                
-                // Gradually move towards the center
-                this.radius -= 0.05; // Slower inward movement
-                if (this.radius < minRadius) {
-                    this.radius = maxRadius;
-                    this.x = centerX + Math.cos(this.angle) * this.radius;
-                    this.y = centerY + Math.sin(this.angle) * this.radius;
+        nav ul li {
+            margin-left: 1rem;
+        }
+
+        nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            color: var(--text-color);
+            padding: 2rem;
+            margin-top: -2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        #hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        #cta-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            font-weight: 400;
+        }
+
+        #cta-button:hover {
+            background-color: var(--highlight-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .skills-container, .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card, .project-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover, .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card h3, .project-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .skill-card p, .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="hero-canvas"></canvas>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Meg Patakota</h1>
+                <h2>Data Scientist & AI Enthusiast</h2>
+                <p>Transforming raw data into actionable insights</p>
+                <button id="cta-button">Explore My Work</button>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                    <p>Expert in developing and implementing ML models</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Analysis</h3>
+                    <p>Proficient in extracting insights from complex datasets</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Advanced programming skills for data science applications</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Deep Learning</h3>
+                    <p>Experience with neural networks and AI applications</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <h3>Customer Churn Prediction</h3>
+                    <p>Developed a model to predict customer churn with 95% accuracy</p>
+                </div>
+                <div class="project-card">
+                    <h3>Sentiment Analysis Tool</h3>
+                    <p>Created an NLP-based tool for real-time social media sentiment analysis</p>
+                </div>
+                <div class="project-card">
+                    <h3>Predictive Maintenance System</h3>
+                    <p>Implemented an IoT-based system for predicting equipment failures</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Meg Patakota. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Animated Background with Data Elements
+        function createAnimatedBackground() {
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const dataElements = [];
+            const numberOfElements = 50;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const maxRadius = Math.min(canvas.width, canvas.height) / 2;
+            const minRadius = maxRadius / 3;
+
+            let mouseX = 0;
+            let mouseY = 0;
+
+            class DataElement {
+                constructor() {
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
+                    this.size = Math.random() * 20 + 10;
+                    this.speed = 0.002 + Math.random() * 0.002;
+                    this.type = Math.floor(Math.random() * 3); // 0: number, 1: graph, 2: symbol
+                    this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
+                    this.value = Math.floor(Math.random() * 100);
+                    this.direction = Math.random() < 0.5 ? 1 : -1; // Clockwise or counterclockwise
+                }
+
+                update() {
+                    this.angle += this.speed * this.direction;
+                    
+                    // Add mouse interaction
+                    const dx = mouseX - centerX;
+                    const dy = mouseY - centerY;
+                    const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+                    const maxDistance = Math.min(canvas.width, canvas.height) / 2;
+                    const influenceFactor = Math.min(1, distanceFromCenter / maxDistance);
+                    
+                    this.x = centerX + Math.cos(this.angle) * this.radius + dx * influenceFactor * 0.1;
+                    this.y = centerY + Math.sin(this.angle) * this.radius + dy * influenceFactor * 0.1;
+                    
+                    // Gradually move towards the center
+                    this.radius -= 0.1;
+                    if (this.radius < minRadius) {
+                        this.radius = maxRadius;
+                    }
+                }
+
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.font = `${this.size}px Arial`;
+                    
+                    if (this.type === 0) {
+                        ctx.fillText(this.value, this.x, this.y);
+                    } else if (this.type === 1) {
+                        this.drawGraph();
+                    } else {
+                        this.drawSymbol();
+                    }
+                }
+
+                drawGraph() {
+                    const points = [];
+                    for (let i = 0; i < 5; i++) {
+                        points.push({
+                            x: this.x + i * 10,
+                            y: this.y + Math.random() * 20 - 10
+                        });
+                    }
+
+                    ctx.beginPath();
+                    ctx.moveTo(points[0].x, points[0].y);
+                    for (let i = 1; i < points.length; i++) {
+                        ctx.lineTo(points[i].x, points[i].y);
+                    }
+                    ctx.strokeStyle = this.color;
+                    ctx.stroke();
+                }
+
+                drawSymbol() {
+                    const symbols = ['Σ', 'μ', 'σ', 'Δ', '∫'];
+                    ctx.fillText(symbols[Math.floor(Math.random() * symbols.length)], this.x, this.y);
                 }
             }
 
-            // ... (draw, drawGraph, and drawSymbol methods remain the same) ...
-        }
-
-        function init() {
-            dataElements.length = 0;
-            for (let i = 0; i < numberOfElements; i++) {
-                dataElements.push(new DataElement());
+            function init() {
+                dataElements.length = 0;
+                for (let i = 0; i < numberOfElements; i++) {
+                    dataElements.push(new DataElement());
+                }
             }
-        }
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < dataElements.length; i++) {
-                dataElements[i].update();
-                dataElements[i].draw();
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < dataElements.length; i++) {
+                    dataElements[i].update();
+                    dataElements[i].draw();
+                }
+                requestAnimationFrame(animate);
             }
-            requestAnimationFrame(animate);
-        }
 
-        init();
-        animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
             init();
+            animate();
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                init();
+            });
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+        }
+
+        // Interactive skills and projects
+        function createInteractiveElements() {
+            const skillCards = document.querySelectorAll('.skill-card');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            function addInteractivity(cards) {
+                cards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'scale(1.05) translateY(-10px)';
+                        card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'scale(1) translateY(0)';
+                        card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                    });
+
+                    card.addEventListener('click', () => {
+                        card.classList.add('clicked');
+                        setTimeout(() => {
+                            card.classList.remove('clicked');
+                        }, 300);
+                    });
+                });
+            }
+
+            addInteractivity(skillCards);
+            addInteractivity(projectCards);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createAnimatedBackground();
+            createInteractiveElements();
         });
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-        });
-    }
-
-    // ... (rest of the script remains the same) ...
-</script>
-
+    </script>
 </body>
 </html>
