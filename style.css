@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 :root {
     --primary-color: #2E1114;
@@ -175,6 +177,7 @@ main {
     color: var(--text-color);
 }
 
+
 footer {
     text-align: center;
     padding: 1rem;
@@ -218,3 +221,85 @@ footer {
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
+
+
+  /* Used in the technical skills section */
+   
+  #skills {
+      background-color: #f8f9fa;
+      padding: 3rem 0;
+  }
+  
+  .section-heading {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 2.5rem;
+  }
+
+
+/* ... (previous CSS rules remain unchanged) ... */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Slightly reduced for better fit */
+    gap: 1rem; /* CHANGED: Reduced from 1.25rem to 1rem for smaller technical skills boxes */
+    max-width: 1100px; /* Slightly increased to accommodate more items */
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.skill-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+}
+
+.skill-item h3 {
+    font-size: 1rem; /* Slightly reduced for longer skill names */
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+}
+
+.skill-item p {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Reduced for better mobile fit */
+    }
+    
+    .skill-item {
+        padding: 0.9rem; /* CHANGED: Reduced from 1rem to 0.9rem */
+    }
+    
+    .skill-icon {
+        font-size: 1.6rem; /* CHANGED: Reduced from 1.75rem to 1.6rem */
+    }
+    
+    .skill-item h3 {
+        font-size: 0.9rem; /* CHANGED: Reduced from 0.95rem to 0.9rem */
+    }
+    
+    .skill-item p {
+        font-size: 0.7rem; /* CHANGED: Reduced from 0.75rem to 0.7rem */
+    }
+}
+/* ... (rest of the CSS remains unchanged) ... */
