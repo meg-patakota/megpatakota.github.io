@@ -32,13 +32,19 @@ body {
 }
 
 header {
-    padding: 1rem 2rem;
+    padding: 2rem 4rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     transition: transform 0.3s ease-in-out;
     box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-color);
+    
+}
+.header-hidden {
+    transform: translateY(-100%);
 }
 
 nav {
