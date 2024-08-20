@@ -13,14 +13,14 @@ function createAnimatedBackground() {
     window.addEventListener('resize', resizeCanvas);
 
     const dataElements = [];
-    const numberOfElements = 50;
+    const numberOfElements = 75;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const maxRadius = Math.min(canvas.width, canvas.height) / 2;
     const minRadius = maxRadius / 3;
 
-    let mouseX = 0;
-    let mouseY = 0;
+    let mouseX = 1000;
+    let mouseY = 1000;
 
     class DataElement {
         constructor() {

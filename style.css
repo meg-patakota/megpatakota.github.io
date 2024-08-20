@@ -302,4 +302,158 @@ footer {
         font-size: 0.7rem; /* CHANGED: Reduced from 0.75rem to 0.7rem */
     }
 }
-/* ... (rest of the CSS remains unchanged) ... */
+
+/* core competencies section */
+#core-expertise {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.pillars-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+.pillar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.pillar-top {
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 10px 10px 0 0;
+    transition: height 0.3s ease;
+}
+
+.pillar-body {
+    flex-grow: 1;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.pillar h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.pillar p {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.pillar:hover {
+    transform: translateY(-10px);
+}
+
+.pillar:hover .pillar-top {
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .pillars-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* education section */
+
+.timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5px;
+    position: relative;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1%;
+    right: -1%;
+    height: 3px;
+    background-color: var(--accent-color);
+}  /*timeline horizontal line*/
+
+.timeline-item {
+    flex: 1;
+    position: relative;
+    padding: 0 10px;
+}
+
+.timeline-item:nth-child(odd) {
+    margin-top: -150px;
+} /*moving the education boxes up and down*/
+
+.timeline-item:nth-child(even) {
+    margin-top: 150px;
+} /*moving the education boxes up and down*/
+
+.timeline-content {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-item::before {
+    content: '|';
+    position: absolute;
+    background-color: var(--accent-color);
+    border-radius: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+} /*blob on the timeline*/
+
+.timeline-item:nth-child(odd)::before {
+    bottom: -46px;
+}
+
+.timeline-item:nth-child(even)::before {
+    top: -46px;
+}
+
+.timeline-year {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.timeline-content h4 {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    margin: 5px 0;
+}
