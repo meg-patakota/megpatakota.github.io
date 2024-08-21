@@ -34,7 +34,7 @@ function createAnimatedBackground() {
             this.value = Math.floor(Math.random() * 100);
             this.direction = Math.random() < 0.5 ? 1 : -1;
             this.symbol = this.getRandomSymbol(); // Assign a fixed symbol on creation
-            this.graphPoints = this.generateGraphPoints(); 
+            
         }
 
         update() {
@@ -96,29 +96,8 @@ function createAnimatedBackground() {
             const symbols = ['Σ', 'μ', 'σ', 'Δ', '∫', '∞', 'θ', 'λ', '√', 'π'];
             return symbols[Math.floor(Math.random() * symbols.length)];
         }
-    
-        generateGraphPoints() {
-            const points = [];
-            for (let i = 0; i < 5; i++) {
-                points.push({
-                    xOffset: i * 10,
-                    yOffset: Math.random() * 20 - 10
-                });
-            }
-            return points;
-        }
-        drawGraph() {
-            ctx.beginPath();
-            ctx.moveTo(this.x + this.graphPoints[0].xOffset, this.y + this.graphPoints[0].yOffset);
-            for (let i = 1; i < this.graphPoints.length; i++) {
-                ctx.lineTo(this.x + this.graphPoints[i].xOffset, this.y + this.graphPoints[i].yOffset);
-            }
-            ctx.strokeStyle = this.color;
-            ctx.stroke();
-        }
     }
-    
-    }
+
     function init() {
         dataElements.length = 0;
         for (let i = 0; i < numberOfElements; i++) {
