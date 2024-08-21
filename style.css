@@ -183,6 +183,34 @@ main {
     color: var(--text-color);
 }
 
+.highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.summary-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%; /* Changed from max-width to width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is included in width */
+    margin: 0 auto; /* Centers the card if it's not full width */
+}
+
+.summary-card p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+}
+
+/* Add this to ensure full width on the body */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 
 footer {
     text-align: center;
