@@ -13,11 +13,12 @@ function createAnimatedBackground() {
     window.addEventListener('resize', resizeCanvas);
 
     const dataElements = [];
-    const numberOfElements = 75;
+    const numberOfElements = 65;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const maxRadius = Math.min(canvas.width, canvas.height) / 2;
-    const minRadius = maxRadius / 3;
+    const maxRadius = Math.min(canvas.width, canvas.height) / 1.5; // Increased divisor to reduce spread
+    const minRadius = maxRadius / 4; // Adjusted to keep elements further from the center
+
 
     let mouseX = 1000;
     let mouseY = 1000;
@@ -27,11 +28,13 @@ function createAnimatedBackground() {
             this.angle = Math.random() * Math.PI * 2;
             this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
             this.size = Math.random() * 20 + 10;
-            this.speed = 0.0005 + Math.random() * 0.0005;
+            this.speed = 0.000001 + Math.random() * 0.000001; // Reduced from 0.0005 to slow down
             this.type = Math.floor(Math.random() * 3);
             this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
             this.value = Math.floor(Math.random() * 100);
             this.direction = Math.random() < 0.5 ? 1 : -1;
+            this.symbol = this.getRandomSymbol(); // Assign a fixed symbol on creation
+            this.graphPoints = this.generateGraphPoints(); 
         }
 
         update() {
@@ -41,17 +44,19 @@ function createAnimatedBackground() {
             const dy = mouseY - centerY;
             const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
             const maxDistance = Math.min(canvas.width, canvas.height) / 2;
-            const influenceFactor = Math.min(1, distanceFromCenter / maxDistance) * 0.1;
+            const influenceFactor = Math.min(1, distanceFromCenter / maxDistance) * 0.05; // Reduced from 0.1
             
-            this.x = centerX + Math.cos(this.angle) * this.radius + dx * influenceFactor * 0.1;
-            this.y = centerY + Math.sin(this.angle) * this.radius + dy * influenceFactor * 0.1;
+            // Circular motion
+            this.x = centerX + Math.cos(this.angle) * this.radius;
+            this.y = centerY + Math.sin(this.angle) * this.radius;
             
-            this.radius -= 0.05;
-            if (this.radius < minRadius) {
-                this.radius = maxRadius;
-            }
+            // Slight radial oscillation
+            this.radius += Math.sin(this.angle * 5) * 0.1;
+            if (this.radius < minRadius) this.radius = minRadius;
+            if (this.radius > maxRadius) this.radius = maxRadius;
         }
-
+            
+        
         draw() {
             ctx.fillStyle = this.color;
             ctx.font = `${this.size}px Arial`;
@@ -84,11 +89,36 @@ function createAnimatedBackground() {
         }
 
         drawSymbol() {
+            ctx.fillText(this.symbol, this.x, this.y);
+        }
+    
+        getRandomSymbol() {
             const symbols = ['Σ', 'μ', 'σ', 'Δ', '∫', '∞', 'θ', 'λ', '√', 'π'];
-            ctx.fillText(symbols[Math.floor(Math.random() * symbols.length)], this.x, this.y);
+            return symbols[Math.floor(Math.random() * symbols.length)];
+        }
+    
+        generateGraphPoints() {
+            const points = [];
+            for (let i = 0; i < 5; i++) {
+                points.push({
+                    xOffset: i * 10,
+                    yOffset: Math.random() * 20 - 10
+                });
+            }
+            return points;
+        }
+        drawGraph() {
+            ctx.beginPath();
+            ctx.moveTo(this.x + this.graphPoints[0].xOffset, this.y + this.graphPoints[0].yOffset);
+            for (let i = 1; i < this.graphPoints.length; i++) {
+                ctx.lineTo(this.x + this.graphPoints[i].xOffset, this.y + this.graphPoints[i].yOffset);
+            }
+            ctx.strokeStyle = this.color;
+            ctx.stroke();
         }
     }
-
+    
+    }
     function init() {
         dataElements.length = 0;
         for (let i = 0; i < numberOfElements; i++) {
