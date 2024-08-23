@@ -130,6 +130,8 @@ function createAnimatedBackground() {
     });
 }
 
+
+
 // Interactive skills and projects
 function createInteractiveElements() {
     const skillCards = document.querySelectorAll('.skill-card');
@@ -181,9 +183,32 @@ function createHeaderScrollBehavior() {
     }, false);
 }
 
+// ... (previous JavaScript code remains unchanged) ...
+
+// Add interactivity to CTA buttons
+function createCTAButtonInteractivity() {
+    const exploreButton = document.getElementById('explore-button');
+    const collaborateButton = document.getElementById('collaborate-button');
+
+    function addButtonEffect(button) {
+        button.addEventListener('click', () => {
+            button.classList.add('clicked');
+            setTimeout(() => {
+                button.classList.remove('clicked');
+            }, 300);
+        });
+    }
+
+    addButtonEffect(exploreButton);
+    addButtonEffect(collaborateButton);
+}
+
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     createAnimatedBackground();
     createInteractiveElements();
     createHeaderScrollBehavior();
+    createCTAButtonInteractivity();
 });
+
+// ... (rest of the JavaScript code remains unchanged) ...
