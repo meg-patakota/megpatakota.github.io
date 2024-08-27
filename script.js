@@ -13,7 +13,7 @@ function createAnimatedBackground() {
     window.addEventListener('resize', resizeCanvas);
 
     const dataElements = [];
-    const numberOfElements = 70;
+    const numberOfElements = 30;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const maxRadius = Math.min(canvas.width, canvas.height) / 1.5; // Increased divisor to reduce spread
@@ -27,13 +27,13 @@ function createAnimatedBackground() {
         constructor() {
             this.angle = Math.random() * Math.PI * 2;
             this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
-            this.size = Math.random() * 20 + 10;
-            this.speed = 0.00005 + Math.random() * 0.00005; // Reduced from 0.0005 to slow down
+            this.size = Math.random() * 12 + 8;
+            this.speed = 0.0000001 + Math.random() * 0.0000001; // Reduced from 0.0005 to slow down
             this.type = Math.floor(Math.random() * 3);
             this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
             // this.color = `rgba(70, 130, 180, ${Math.random() * 0.3 + 0.1})`;
             this.value = Math.floor(Math.random() * 100);
-            this.direction = Math.random() < 0.5 ? 1 : -1;
+            this.direction = Math.random() < 0.1? 1 : -1;
             this.symbol = this.getRandomSymbol(); // Assign a fixed symbol on creation
             
         }
@@ -61,32 +61,12 @@ function createAnimatedBackground() {
         draw() {
             ctx.fillStyle = this.color;
             ctx.font = `${this.size}px Arial`;
-            
+        
             if (this.type === 0) {
                 ctx.fillText(this.value, this.x, this.y);
-            } else if (this.type === 1) {
-                this.drawGraph();
             } else {
                 this.drawSymbol();
             }
-        }
-
-        drawGraph() {
-            const points = [];
-            for (let i = 0; i < 5; i++) {
-                points.push({
-                    x: this.x + i * 10,
-                    y: this.y + Math.random() * 20 - 10
-                });
-            }
-
-            ctx.beginPath();
-            ctx.moveTo(points[0].x, points[0].y);
-            for (let i = 1; i < points.length; i++) {
-                ctx.lineTo(points[i].x, points[i].y);
-            }
-            ctx.strokeStyle = this.color;
-            ctx.stroke();
         }
 
         drawSymbol() {
