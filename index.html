@@ -4,170 +4,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meg Patakota - Data Science & Research </title>
+    <title>Meg Patakota - Data Science & Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
-    <style>
-        #hero {
-            position: relative;
-            height: 90vh;
-            overflow: hidden;
+    <link rel="expertise" href="expertise.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2E1114',
+                        secondary: '#501B1D',
+                        accent: '#64485C',
+                        text: '#333333',
+                        bg: '#F5F5F5',
+                        highlight: '#83677B',
+                    }
+                }
+            }
         }
-
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+    </script>
 </head>
 
 <body>
     <header>
         <nav>
             <ul>
-                <!-- <li><a href="#hero">Home</a></li> -->
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#core-expertise">Expertise</a></li>
+                <li><a href="expertise.html">Expertise</a></li>
                 <li><a href="#technicalskills">Skills</a></li>
-                <!-- <li><a href="#education">Education</a></li> -->
             </ul>
         </nav>
     </header>
     <main>
-        <section id="hero">
-            <canvas id="hero-canvas"></canvas>
-            <div class="hero-content">
-                <h1>Meg Patakota</h1>
-                <h2>Principal Data Scientist, Mishcon de Reya</h2>
-                <h2>AI Researcher, University of Oxford</h2>
-                <p style="text-align: center;font-size: 0.7rem;">  Transforming raw data into actionable insights</p>
+        <section id="hero" class="relative h-screen overflow-hidden flex items-center justify-center">
+            <canvas id="hero-canvas" class="absolute top-0 left-0 w-full h-full"></canvas>
+            <div class="hero-content relative z-10 text-center space-y-6">
+                <h1 class="text-5xl font-bold mb-8">Meg Patakota</h1>
+                <h2 class="text-2xl mb-6">Principal Data Scientist, Mishcon de Reya</h2>
+                <h2 class="text-2xl mb-6">AI Researcher, University of Oxford</h2>
+                <p class="text-sm">Transforming raw data into actionable insights</p>
                 <div class="cta-buttons">
-                    <button id="explore-button" class="cta-button">
+                    <button id="explore-collaborate-button" class="cta-button">
                         <span>Explore My Work</span>
                         <i class="fas fa-search"></i>
                     </button>
-                    <button id="collaborate-button" class="cta-button">
+                    <button id="explore-collaborate-button" class="cta-button">
                         <span>Let's Collaborate</span>
                         <i class="fas fa-handshake"></i>
                     </button>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
                     <a href="mailto:megpatakota@icloud.com" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://github.com/meg-patakota" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <a href="https://github.com/meg-patakota" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
                 </div>
             </div>
         </section>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class=" project-card bg-white rounded-lg shadow-md p-8 w-full max-w-4xl mx-auto">
+              <h3 class="text-2xl font-bold text-primary mb-4 text-center">About me</h3>
+              <ul class="space-y-4 text-gray-800">
+                <li class="flex items-center">
+                  <i class="fas fa-chart-line text-accent mr-2"></i>
+                  <span><span class="font-semibold text-secondary">3+ years</span> pioneering Data Science and Analytics</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-balance-scale text-accent mr-2"></i>
+                  <span>Driving <span class="font-semibold text-secondary">Mishcon de Reya</span> towards data-driven excellence</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-robot text-accent mr-2"></i>
+                  <span>Implementing cutting-edge <span class="font-semibold text-accent">AI</span> and <span class="font-semibold text-accent">ML</span> solutions</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-university text-accent mr-2"></i>
+                  <span>Collaborating with <span class="font-semibold text-secondary">University of Oxford</span> on AI for climate litigation</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="project-card bg-white rounded-lg shadow-md p-8 w-full max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-secondary mb-6 text-center">My passion</h3>
+                <ul class="space-y-6">
+                  <li class="relative overflow-hidden rounded-lg">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#2E1114] to-[#501B1D] opacity-20 transform -skew-x-12"></div>
+                    <div class="flex items-center p-4 relative z-10">
+                      <i class="fas fa-chart-line text-accent mr-4 text-xl"></i>
+                      <span class="text-lg font-medium text-gray-800">Data Science and Analytics</span>
+                    </div>
+                  </li>
+                  <li class="relative overflow-hidden rounded-lg">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#501B1D] to-[#64485C] opacity-20 transform -skew-x-12"></div>
+                    <div class="flex items-center p-4 relative z-10">
+                      <i class="fas fa-globe text-accent mr-4 text-xl"></i>
+                      <span class="text-lg font-medium text-gray-800">Sustainability and AI</span>
+                    </div>
+                  </li>
+                  <li class="relative overflow-hidden rounded-lg">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#64485C] to-[#83677B] opacity-20 transform -skew-x-12"></div>
+                    <div class="flex items-center p-4 relative z-10">
+                      <i class="fas fa-microchip text-accent mr-4 text-xl"></i>
+                      <span class="text-lg font-medium text-gray-800">Retrieval Augmented Generation</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            <!-- <div class="project-card  bg-white rounded-lg shadow-md p-8 w-full max-w-4xl mx-auto">
+              <h3 class="text-2xl font-bold text-secondary mb-4 text-center">My passion</h3>
+              <ul class="space-y-4 text-gray-800">
+                <li class="flex items-center justify-center">
+                    <i class="fas fa-chart-line text-accent mr-2"></i>
+                  <span>Data Science and Analytics</span>
+                </li>
+                <li class="flex items-center justify-center">
+                    <i class="fas fa-globe text-accent mr-2"></i>
+                  <span>Sustainability and AI</span>
+                </li>
+                <li class="flex items-center justify-center">
+                <i class="fas fa-microchip text-accent mr-2"></i>
+                  <span>Retrieval Augmented Generation</span>
+                </li>
+              </ul>
+            </div>
+          </div> -->
 
-        <div class="summary-card">
-            <h2 style="text-align: center;font-size: 2rem;" >About Me </h2>
-                <p>
-                    Principal Data Scientist with expertise in AI, data analytics, and business intelligence. 
-                    Leading data science and analytics initiatives at Mishcon de Reya. 
-                    <br>Collaborating with University of Oxford on 
-                    AI for climate litigation. Day-to-day tech stack includes Python, Azure, AWS, and Power BI. 
-                    <br>Passionate about AI for sustainability.
-                </p>
-                </div>
-
+        </div>
         <section id="projects">
-            <div style="padding-top: 50px;"></div>
-            <h2 class="section-heading">Current Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <h3>CLARA: CLimate Accountability Research Assistant</h3>
-                    <p>Uses the power of AI to support in climate research. Developed in collaboration with University
-                        of Oxford.</p>
-                    <a href="https://clara-research.com" target="_blank" rel="noopener noreferrer">
-                        <button id="currentproject-button">CLARA</button>
-                    </a>
-                    <p>Register & explore CLARA today! <br>
-                        The tool for academics, litigators and climate enthusiasts.</p>
+            <h2 class="text-4xl font-bold text-center mb-1 text-primary py-15 pt-20">Projects</h2>
+            <div class="projects-container flex flex-wrap justify-center gap-8">
+                <div class="project-card bg-white rounded-lg shadow-lg max-w-s">
+                    <h2 class="text-2xl font-bold mb-4">CLARA: CLimate Accountability Research Assistant</h2>
+                    <p class="mb-6">Uses the power of AI to support in climate research. The tool for academics,
+                        litigators and climate enthusiasts.</p>
+                    <div class="flex flex-col items-center space-y-4">
+                        <a href="https://clara-research.com" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
+                            Register Today!
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                        <div class="mt-4 p-2 rounded-lg flex items-center space-x-4">
+                            <img src="logos/ssme_logo.png" alt="CLARA Logo" class="w-27 h-16 object-contain">
+                            <p class="text-xxxs font-semibold bg-white text-white px-2 py-1 rounded">Collaboration with
+                                the University of Oxford</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <h3>CompanyMatch: Intelligent Company Name Reconciliation</h3>
-                    <p>Bridging the gap between diverse company databases and official registries with advanced matching
-                        & AI.</p>
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <button id="comingsoon-button"><i>Coming Soon!</i></button>
-                    </a>
-                    <p>Enhancing data accuracy for businesses, researchers, and regulatory compliance.</p>
 
+                <div class="project-card bg-white rounded-lg shadow-lg p-6 max-w-s">
+                    <h2 class="text-2xl font-bold mb-4">CompanyMatch: Intelligent Company Name Reconciliation</h2>
+                    <p class="mb-6">Bridging the gap between diverse company databases and official registries with
+                        advanced matching & AI.</p>
+                    <div class="flex justify-center">
+                        <button
+                            class="bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-lg font-normal cursor-not-allowed">
+                            Coming Soon...
+                        </button>
+                    </div>
+                    <p class="mt-4 text-center">Enhancing data accuracy for businesses, researchers, and regulatory
+                        compliance.</p>
                 </div>
             </div>
         </section>
+        </div>
 
-        <section id="core-expertise">
-            <h2 class="section-heading">Pillars of Expertise</h2>
-            <div class="pillars-container">
-                <div class="pillar">
-                    <div class="pillar-top"></div>
-                    <div class="pillar-body">
-                        <h3>Data Science Leadership</h3>
-                        <p>Driving executive decisions with data-driven insights and managing cross-functional teams for
-                            impactful outcomes.</p>
+        <section id="professional-experience" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-10">
+                <h2 class="text-3xl font-bold text-center mb-12 text-primary">Current Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-accent h-1"></div>
+                        <div class="p-6">
+                            <p class="text-secondary mb-2">Mishcon de Reya</p>
+                            <h3 class="text-2xl font-semibold mb-2 text-primary">Principal Data Scientist</h3>
+                            <p class="text-sm text-accent mb-4">April 2024 - Present</p>
+                            <div class="mt-4">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Strategy</span>
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Team
+                                        Leadership</span>
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Machine
+                                        Learning</span>
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Business
+                                        Acumen</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t p-6">
+                            <h4 class="text-xl font-semibold mb-2 text-primary">Data Scientist</h4>
+                            <p class="text-sm text-secondary mb-4">February 2022 - March 2024</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Analytics</span>
+                                <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Legal Tech, Biz
+                                    Ops</span>
+                                <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Data
+                                    Storyteller</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-top"></div>
-                    <div class="pillar-body">
-                        <h3>Advanced Analytics & ML</h3>
-                        <p>Developing predictive models and extracting actionable insights from complex,
-                            multi-dimensional datasets across various business domains.</p>
-                    </div>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-top"></div>
-                    <div class="pillar-body">
-                        <h3>AI Research & Development</h3>
-                        <p>Pioneering GraphRAG chatbots, exploring retrieval augmented generation, and advancing natural
-                            language processing techniques.</p>
-                    </div>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-top"></div>
-                    <div class="pillar-body">
-                        <h3>Data Architecture & Engineering</h3>
-                        <p>Designing and optimizing data pipelines, implementing ETL processes, and integrating diverse
-                            data sources for enhanced analytics capabilities.</p>
-                    </div>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-top"></div>
-                    <div class="pillar-body">
-                        <h3>Business Intelligence</h3>
-                        <p>Creating impactful dashboards, establishing best practices for report building, and driving
-                            data-driven decision making across organizations.</p>
-                    </div>
-                </div>
-                <div class="pillar">
-                    <div class="pillar-top"></div>
-                    <div class="pillar-body">
-                        <h3>Cloud & Big Data Technologies</h3>
-                        <p>Leveraging Azure Synapse Analytics, AWS services, and other cloud technologies for scalable
-                            data solutions and AI deployments.</p>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-accent h-1"></div>
+                        <div class="p-6">
+                            <p class="text-secondary mb-2">University of Oxford</p>
+                            <h3 class="text-2xl font-semibold mb-2 text-primary">AI Researcher</h3>
+                            <p class="text-sm text-accent mb-4">September 2023 - Present</p>
+                            <div class="mt-4">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">AI
+                                        Innovation</span>
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Research
+                                        Design</span>
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">NLP</span>
+                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">Academic
+                                        Writing</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="technicalskills">
-            <h2 class="section-heading">Technical Skills</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-item">
                     <i class="skill-icon fab fa-python"></i>
@@ -219,39 +293,7 @@
                     <h3>Network Analytics</h3>
                     <p>Analysis of complex network structures and data flows</p>
                 </div>
-            </div>
-
-            <section id="education">
-                <!-- add a bit of padding before the section begins -->
-                <div style="padding-top: 50px;"></div>
-                <h2 class="section-heading">Education Journey</h2>
-                <div class="timeline-container">
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-year">2020-2021</div>
-                                <h4>MSc Business Analytics</h4>
-                                <h3>UCL</h3>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-year">2019-2020</div>
-                                <h4>MSc Accounting and Finance</h4>
-                                <h3>University of Bristol</h3>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-year">2015-2019</div>
-                                <h4>BSc Business Administration, BA International Trade</h4>
-                                <h3>University at Buffalo</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+        </section>
     </main>
     <footer>
         <p>&copy; 2024 Meg Patakota. All rights reserved.</p>
