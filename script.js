@@ -27,11 +27,10 @@ function createAnimatedBackground() {
         constructor() {
             this.angle = Math.random() * Math.PI * 2;
             this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
-            this.size = Math.random() * 12 + 8;
+            this.size = Math.random() * 12 + 6;
             this.speed = 0.0000001 + Math.random() * 0.0000001; // Reduced from 0.0005 to slow down
             this.type = Math.floor(Math.random() * 3);
             this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
-            // this.color = `rgba(70, 130, 180, ${Math.random() * 0.3 + 0.1})`;
             this.value = Math.floor(Math.random() * 100);
             this.direction = Math.random() < 0.1? 1 : -1;
             this.symbol = this.getRandomSymbol(); // Assign a fixed symbol on creation
@@ -61,14 +60,22 @@ function createAnimatedBackground() {
         draw() {
             ctx.fillStyle = this.color;
             ctx.font = `${this.size}px Arial`;
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
         
             if (this.type === 0) {
                 ctx.fillText(this.value, this.x, this.y);
             } else {
                 this.drawSymbol();
             }
-        }
+        
 
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+        }
         drawSymbol() {
             ctx.fillText(this.symbol, this.x, this.y);
         }
