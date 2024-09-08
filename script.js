@@ -189,13 +189,34 @@ function createCTAButtonInteractivity() {
     addButtonEffect(exploreButton);
     addButtonEffect(collaborateButton);
 }
+// New function for dropdown menu
+function createDropdownMenu() {
+    const dropBtn = document.getElementById('dropbtn');
+    const dropdownContent = document.getElementById('myDropdown');
 
+    // Toggle dropdown visibility on button click
+    dropBtn.addEventListener('click', function (event) {
+        event.stopPropagation(); // Stop the event from bubbling up
+        dropdownContent.classList.toggle('show');
+    });
+
+    // Close the dropdown when clicking outside of it
+    document.addEventListener('click', function (event) {
+        if (!dropBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+            dropdownContent.classList.remove('show');
+        }
+    
+    document.getElementById("dropbtn").onclick = function () {
+            document.getElementById("myDropdown").classList.toggle("show");
+        };
+        
+    });
+}
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     createAnimatedBackground();
     createInteractiveElements();
     createHeaderScrollBehavior();
     createCTAButtonInteractivity();
+    createDropdownMenu(); 
 });
-
-// ... (rest of the JavaScript code remains unchanged) ...
