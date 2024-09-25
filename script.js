@@ -13,7 +13,7 @@ function createAnimatedBackground() {
     window.addEventListener('resize', resizeCanvas);
 
     const dataElements = [];
-    const numberOfElements = 30;
+    const numberOfElements = 35;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const maxRadius = Math.min(canvas.width, canvas.height) / 1.5; // Increased divisor to reduce spread
@@ -28,7 +28,7 @@ function createAnimatedBackground() {
             this.angle = Math.random() * Math.PI * 2;
             this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
             this.size = Math.random() * 12 + 6;
-            this.speed = 0.0000001 + Math.random() * 0.0000001; // Reduced from 0.0005 to slow down
+            this.speed = 0.000001 + Math.random() * 0.000001; // Reduced from 0.0005 to slow down
             this.type = Math.floor(Math.random() * 3);
             this.color = `rgba(46, 17, 20, ${Math.random() * 0.3 + 0.1})`;
             this.value = Math.floor(Math.random() * 100);

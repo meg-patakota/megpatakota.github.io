@@ -51,7 +51,6 @@
         body {
             margin: 0;
             padding: 0;
-            display: flex;
             font-family: 'Libre Baskerville', serif;
         }
 
@@ -74,12 +73,13 @@
             margin-left: 30%;
             width: 70%;
             overflow-y: auto;
-            height: 100vh;
+            height: auto;
             padding: 2rem;
         }
 
         @media (max-width: 768px) {
             body {
+                display: flex;
                 flex-direction: column;
             }
 
@@ -187,17 +187,18 @@
             <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
                 <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
                     aria-label="LinkedIn" style="color: #2E1114; transition: color 0.3s ease;">
-                    <i class="fab fa-linkedin" style="font-size: 1.5rem;"></i>
+                    <i class="fab fa-linkedin" style="font-size: 2rem;"></i>
                 </a>
                 <a href="mailto:megpatakota@icloud.com" aria-label="Email"
                     style="color: #2E1114; transition: color 0.3s ease;">
-                    <i class="fas fa-envelope" style="font-size: 1.5rem;"></i>
+                    <i class="fas fa-envelope" style="font-size: 2rem;"></i>
                 </a>
                 <a href="https://github.com/megpatakota" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
                     style="color: #2E1114; transition: color 0.3s ease;">
-                    <i class="fab fa-github" style="font-size: 1.5rem;"></i>
+                    <i class="fab fa-github" style="font-size: 2rem;"></i>
                 </a>
             </div>
+            <br>
         </div>
     </section>
     <main id="main-content" class="mt-[100px]"> <!-- Adjust this value as needed -->
@@ -312,9 +313,45 @@
                         </div>
                         <p class="mt-4 text-center">To all those sustainability and data enthusiasts. Feel free to contribute to my repo.</p>
                     </div>
-        
+                    
+                    <!-- Climate Patent Project -->
+                    <div class="project-card bg-white rounded-lg shadow-lg p-8">
+                        <h2 class="text-2xl font-bold mb-4 text-center">Text Classification with DeBERTa (climate patent domain focused)</h2>
+                        <p class="mb-6">This project utilizes the DeBERTa model for classifying patent data into climate change mitigation technologies, as defined by the IPCC (Intergovernmental Panel on Climate Change) classification system.</p>
+                        <div class="flex flex-col items-center space-y-4">
+                            <a href="https://github.com/megpatakota/text_classification_climate_patent" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
+                            View on GitHub
+                            <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                            </path>
+                        </svg>
+                        </a>
+                        </div>
+                        <p class="mt-4 text-center">This tool is intended to assist in identifying technologies that contribute to climate change mitigation efforts, leveraging advanced machine learning techniques.</p>
+                    </div>
+
+                    <!-- CompanyMatch Project -->
+                    <div class="project-card bg-white rounded-lg shadow-lg p-8">
+                        <h2 class="text-2xl font-bold mb-4 text-center">CompanyMatch: Intelligent Company Name Reconciliation</h2>
+                        <p class="mb-6">Bridging the gap between diverse company databases and official registries with advanced matching & AI.</p>
+                        <div class="flex flex-col items-center space-y-4">
+                            <div class="flex justify-center">
+                                <button class="bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-lg font-normal cursor-not-allowed">
+                                    Coming Soon...
+                                </button>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-center">Enhancing data accuracy for businesses, researchers, and regulatory compliance.</p>
+                    </div>
+                    
                     <!-- CompanyMatch Project (Centered) -->
-                    <div class="md:col-span-2 max-w-2xl mx-auto">
+                    <!-- <div class="md:col-span-2 max-w-2xl mx-auto">
                         <div class="project-card bg-white rounded-lg shadow-lg p-8 text-center">
                             <h2 class="text-2xl font-bold mb-4 text-center">CompanyMatch: Intelligent Company Name Reconciliation</h2>
                             <p class="mb-6">Bridging the gap between diverse company databases and official registries with advanced matching & AI.</p>
@@ -325,7 +362,7 @@
                             </div>
                             <p class="mt-4">Enhancing data accuracy for businesses, researchers, and regulatory compliance.</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
