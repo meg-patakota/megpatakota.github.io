@@ -65,6 +65,24 @@
         // Initialize dropdown when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', createDropdownMenu);
     </script>
+        <script>
+            // Function to handle showing and hiding the navbar based on scroll direction
+            document.addEventListener('DOMContentLoaded', function () {
+                let lastScrollY = window.scrollY;
+                const header = document.getElementById('header-bar'); // Add ID to the header
+    
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > lastScrollY) {
+                        // Scrolling down
+                        header.classList.add('header-hidden');
+                    } else {
+                        // Scrolling up
+                        header.classList.remove('header-hidden');
+                    }
+                    lastScrollY = window.scrollY;
+                });
+            });
+        </script>
     <style>
         body {
             margin: 0;
@@ -163,17 +181,22 @@
         .show {
             display: block;
         }
+               /* Hiding the header when scrolling */
+               .header-hidden {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
     </style>
 </head>
 
 <!-- Enhanced Heading Bar -->
-<div class="bg-gradient-to-r from-gray-10 to-gray-10 py-3 px-6 fixed top-0 left-0 w-full z-50 shadow-sm">
-    <nav class="flex space-x-6 items-center">
-        <a href="#projects" class="text-gray-800 hover:text-secondary text-secondary  duration-300 ease-in-out">Projects</a>
-        <a href="#technicalskills" class="text-gray-800 hover:text-secondary  text-secondary transition duration-300 ease-in-out">Skills</a>
-        <!-- <a href="#contact" class="text-gray-800 font-semibold hover:text-primary transition duration-300 ease-in-out">Contact</a> -->
-    </nav>
-</div>
+    <!-- Enhanced Heading Bar -->
+    <div id="header-bar" class="bg-gradient-to-r from-gray-10 to-gray-10 py-3 px-6 fixed top-0 left-0 w-full z-50 shadow-sm">
+        <nav class="flex space-x-6 items-center">
+            <a href="#projects" class="text-gray-800 hover:text-secondary text-secondary duration-300 ease-in-out">Projects</a>
+            <a href="#technicalskills" class="text-gray-800 hover:text-secondary text-secondary transition duration-300 ease-in-out">Skills</a>
+        </nav>
+    </div>
 
 <style>
     /* Adjust spacing for content when navbar is fixed */
