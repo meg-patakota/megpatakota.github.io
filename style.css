@@ -5,14 +5,16 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 /* Variables */
-:root {
+
+/* Old pinkish color */
+/* :root {
     --primary-color: #2E1114;
     --secondary-color: #501B1D;
     --accent-color: #64485C;
     --text-color: #333333;
     --bg-color: #F5F5F5;
     --highlight-color: #83677B;
-}
+} */
 
 /* Global Styles */
 body {
