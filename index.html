@@ -3,22 +3,22 @@
 
 <head>
     <script>
-  (function(n,i,v,r,s,c,x,z){x=window.AwsRumClient={q:[],n:n,i:i,v:v,r:r,c:c};window[n]=function(c,p){x.q.push({c:c,p:p});};z=document.createElement('script');z.async=true;z.src=s;document.head.insertBefore(z,document.head.getElementsByTagName('script')[0]);})(
-    'cwr',
-    '1d5ae548-1e85-46f2-b42e-8b15f35e5d9a',
-    '1.0.0',
-    'eu-west-2',
-    'https://client.rum.us-east-1.amazonaws.com/1.18.0/cwr.js',
-    {
-      sessionSampleRate: 1,
-      identityPoolId: "eu-west-2:c8ce8bbc-733d-4668-a5b2-4810c92dee69",
-      endpoint: "https://dataplane.rum.eu-west-2.amazonaws.com",
-      telemetries: ["performance","errors","http"],
-      allowCookies: true,
-      enableXRay: false
-    }
-  );
-</script>
+        (function (n, i, v, r, s, c, x, z) { x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c }; window[n] = function (c, p) { x.q.push({ c: c, p: p }); }; z = document.createElement('script'); z.async = true; z.src = s; document.head.insertBefore(z, document.head.getElementsByTagName('script')[0]); })(
+            'cwr',
+            '1d5ae548-1e85-46f2-b42e-8b15f35e5d9a',
+            '1.0.0',
+            'eu-west-2',
+            'https://client.rum.us-east-1.amazonaws.com/1.18.0/cwr.js',
+            {
+                sessionSampleRate: 1,
+                identityPoolId: "eu-west-2:c8ce8bbc-733d-4668-a5b2-4810c92dee69",
+                endpoint: "https://dataplane.rum.eu-west-2.amazonaws.com",
+                telemetries: ["performance", "errors", "http"],
+                allowCookies: true,
+                enableXRay: false
+            }
+        );
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meg Patakota - Data Science & Research</title>
@@ -31,11 +31,11 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2E1114',
-                        secondary: '#501B1D',
-                        accent: '#64485C',
-                        text: '#333333',
-                        bg: '#F5F5F5',
+                        primary: '#005f73',
+                        secondary: '#005273',
+                        accent: '#005f73',
+                        text_color: '#333333',
+                        bg: '#005f73',
                         highlight: '#83677B',
                     }
                 }
@@ -69,7 +69,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Libre Baskerville', serif;
+            font-family: 'Georgia', serif;
         }
 
         .header-hidden {
@@ -123,7 +123,7 @@
         }
 
         .dropbtn {
-            background-color: #64485C;
+            background-color: #005f73;
             color: white;
             padding: 10px;
             font-size: 16px;
@@ -166,41 +166,47 @@
     </style>
 </head>
 
-<div class="dropdown">
-    <button id="dropbtn" class="dropbtn">
-        <i class="fas fa-ellipsis-v"></i>
-    </button>
-    <div id="myDropdown" class="dropdown-content">
-        <a href="#projects">Projects</a>
-        <a href="#technicalskills">Skills</a>
-    </div>
+<!-- Enhanced Heading Bar -->
+<div class="bg-gradient-to-r from-gray-10 to-gray-10 py-3 px-6 fixed top-0 left-0 w-full z-50 shadow-sm">
+    <nav class="flex space-x-6 items-center">
+        <a href="#projects" class="text-gray-800 hover:text-secondary text-secondary  duration-300 ease-in-out">Projects</a>
+        <a href="#technicalskills" class="text-gray-800 hover:text-secondary  text-secondary transition duration-300 ease-in-out">Skills</a>
+        <!-- <a href="#contact" class="text-gray-800 font-semibold hover:text-primary transition duration-300 ease-in-out">Contact</a> -->
+    </nav>
 </div>
+
+<style>
+    /* Adjust spacing for content when navbar is fixed */
+    body {
+        padding-top: 60px; /* Adjust this value to match the height of the navbar */
+    }
+    
+    /* Hover effect for links */
+    a:hover {
+        transform: translateY(-2px); /* Subtle lift on hover */
+    }
+</style>
+
 
 <body>
     <section id="hero">
-        <canvas id="hero-canvas"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 5rem;"></canvas>
-        <div style="position: relative; z-index: 4; text-align: center; padding-left: 2rem;padding-top: 1rem; ">
-            <div class="mt-4 flex justify-center items-center">
-                <img src="logos/profile.jpeg" alt="Meg's Profile" class="h-72 w-72 object-contain">
-            </div>
-            
-            <h1 style="font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem;">Meg Patakota</h1>
-            <h2 style="font-size: 1rem; margin-bottom: 0.7rem;">Principal Data Scientist, Mishcon de Reya</h2>
-            <h2 style="font-size: 1rem; margin-bottom: 1.2rem;">AI Researcher, University of Oxford</h2>
-            <p style="font-size: 0.675rem; margin-bottom: 1.5rem;">Transforming raw data into actionable insights</p>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
-                <a href="#projects" style="width: 70%;">
-                    <button id="explore-work-button"
-                        style="display: inline-flex; align-items: center; justify-content: center; background-color: #64485C; color: white; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 1rem; transition: all 0.3s ease; border: none; cursor: pointer; width: 100%;">
-                        <span>Explore My Work</span>
-                        <i class="fas fa-search" style="margin-left: 0.5rem;"></i>
-                    </button>
-                </a>
+        <canvas id="hero-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
+        <div style="position: relative; z-index: 4; text-align: center; padding-left: 1rem;padding-top: 7rem; ">
+            <!-- <div class="mt-4 flex justify-center items-center">
+                <img src="logos/profile.jpeg" alt="Meg's Profile" class="h-72 w-82 object-contain">
+            </div> -->
+            <h1 style="font-size: 2.25rem; font-weight: semi-bold; margin-bottom: 1rem; ">Meghana(Meg) Patakota</h1>
+            <h2 style="font-size: 1.2rem; margin-bottom: 0.9rem; font-weight: normal;">
+                Principal Data Scientist, <span style="font-weight: normal;  font-style: italic;">Mishcon de Reya</span>
+            </h2>
+            <h2 style="font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: normal;">
+                AI Researcher, <span style="font-weight: normal; font-style: italic;">University of Oxford</span>
+            </h2>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
                 <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
-                    style="width: 70%;">
+                    style="width: 50%;">
                     <button id="collaborate-button"
-                        style="display: inline-flex; align-items: center; justify-content: center; background-color: #64485C; color: white; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 1rem; transition: all 0.3s ease; border: none; cursor: pointer; width: 100%;">
+                        style="display: inline-flex; align-items: center; justify-content: center; background-color: #005f73; color: white; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 1rem; transition: all 0.3s ease; border: none; cursor: pointer; width: 100%;">
                         <span>Let's Collaborate</span>
                         <i class="fas fa-handshake" style="margin-left: 0.5rem;"></i>
                     </button>
@@ -208,170 +214,160 @@
             </div>
             <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
                 <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
-                    aria-label="LinkedIn" style="color: #2E1114; transition: color 0.3s ease;">
-                    <i class="fab fa-linkedin" style="font-size: 2rem;"></i>
+                    aria-label="LinkedIn" style="color: #14213d; transition: color 0.3s ease;">
+                    <i class="fab fa-linkedin" style="font-size: 2.5rem;"></i>
                 </a>
                 <a href="mailto:megpatakota@icloud.com" aria-label="Email"
-                    style="color: #2E1114; transition: color 0.3s ease;">
-                    <i class="fas fa-envelope" style="font-size: 2rem;"></i>
+                    style="color: #14213d; transition: color 0.3s ease;">
+                    <i class="fas fa-envelope" style="font-size: 2.5rem;"></i>
                 </a>
                 <a href="https://github.com/megpatakota" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                    style="color: #2E1114; transition: color 0.3s ease;">
-                    <i class="fab fa-github" style="font-size: 2rem;"></i>
+                    style="color: #14213d; transition: color 0.3s ease;">
+                    <i class="fab fa-github" style="font-size: 2.5rem;"></i>
                 </a>
             </div>
-            <br>
-        </div>
-    </section>
-    <main id="main-content" class="mt-[10px]"> <!-- Adjust this value as needed -->
-        <h2 class="text-3xl font-bold text-center mb-1 text-primary">About me</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-4 mx-8">
-            <div class="project-card bg-white rounded-lg shadow-md p-8 w-full max-w-4xl mx-auto">
-                <h3 class="text-2xl font-bold text-primary mb-4 text-center">Professional Summary</h3>
-                <ul class="space-y-4 text-gray-800">
+
+            <div class="rounded-lg p-8 w-full max-w-4xl mx-auto text-left">
+                <ul class="space-y-4 text-gray-800 py-10">
+                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">About Me</h3>
+            
                     <li class="flex items-center">
                         <i class="fas fa-chart-line text-accent mr-2"></i>
-                        <span><span class="font-semibold text-secondary">3+ years</span> pioneering Data Science and
-                            Analytics</span>
+                        <span><span class="font-semibold text-secondary">Data Scientist & AI Researcher</span></span>
                     </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-balance-scale text-accent mr-2"></i>
-                        <span>Driving <span class="font-semibold text-secondary">Mishcon de Reya</span> towards
-                            data-driven excellence</span>
-                    </li>
+            
                     <li class="flex items-center">
                         <i class="fas fa-robot text-accent mr-2"></i>
-                        <span>Implementing cutting-edge <span class="font-semibold text-accent">AI</span> and <span
-                                class="font-semibold text-accent">ML</span> solutions</span>
+                        <span>Expert in AI and machine learning.</span>
                     </li>
+            
                     <li class="flex items-center">
-                        <i class="fas fa-university text-accent mr-2"></i>
-                        <span>Collaborating with <span class="font-semibold text-secondary">University of Oxford</span>
-                            on AI for climate litigation</span>
+                        <i class="fas fa-database text-accent mr-2"></i>
+                        <span>End-to-end data pipeline builder.</span>
+                    </li>
+            
+                    <li class="flex items-center">
+                        <i class="fas fa-globe text-accent mr-2"></i>
+                        <span>Strong interest for sustainability & AI.</span>
+                    </li>
+            
+                    <li class="flex items-center">
+                        <i class="fas fa-lightbulb text-accent mr-2"></i>
+                        <span>Passionate about data-driven solutions.</span>
                     </li>
                 </ul>
             </div>
+    </section>
+    <main id="main-content" class="mt-[10px]"> <!-- Adjust this value as needed -->
 
-
-            <div class="project-card bg-white rounded-lg shadow-md p-8 w-full max-w-4xl mx-auto">
-                <h3 class="text-2xl font-bold text-secondary mb-6 text-center">My passion</h3>
-                <ul class="space-y-6">
-                    <li class="relative overflow-hidden rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-[#2E1114] to-[#501B1D] opacity-20 transform -skew-x-12">
-                        </div>
-                        <div class="flex items-center p-4 relative z-10">
-                            <i class="fas fa-chart-line text-accent mr-4 text-xl"></i>
-                            <span class="text-lg font-medium text-gray-800">Data Science and Analytics</span>
-                        </div>
-                    </li>
-                    <li class="relative overflow-hidden rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-[#501B1D] to-[#64485C] opacity-20 transform -skew-x-12">
-                        </div>
-                        <div class="flex items-center p-4 relative z-10">
-                            <i class="fas fa-globe text-accent mr-4 text-xl"></i>
-                            <span class="text-lg font-medium text-gray-800">Sustainability and AI</span>
-                        </div>
-                    </li>
-                    <li class="relative overflow-hidden rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-[#64485C] to-[#83677B] opacity-20 transform -skew-x-12">
-                        </div>
-                        <div class="flex items-center p-4 relative z-10">
-                            <i class="fas fa-microchip text-accent mr-4 text-xl"></i>
-                            <span class="text-lg font-medium text-gray-800">Retrieval Augmented Generation</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
         <!-- Projects section -->
-        <section id="projects" class="py-10">
-            <h2 class="text-3xl font-bold text-center mb-10 text-primary">Projects</h2>
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section id="projects" class="py-0">
+            <h2 class="text-3xl font-semi-bold text-center text-primary">Projects</h2>
+            <p class="text-center text-gray-600">Present and historic projects.</p>
+            <hr class="my-4 border-t-2 border-gray-100">
+            <div class="container mx-auto px-6 py-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- CLARA Project -->
                     <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">CLARA: CLimate Accountability Research Assistant</h2>
-                        <p class="mb-6">Uses the power of AI to support in climate research. The tool for academics, litigators and climate enthusiasts.</p>
+                        <h2 class="text-2xl font-bold mb-4 text-center">CLARA: CLimate Accountability Research Assistant
+                        </h2>
+                        <p class="mb-6">Uses the power of AI to support in climate research. The tool for academics,
+                            litigators and climate enthusiasts.</p>
                         <div class="flex flex-col items-center space-y-4">
                             <a href="https://clara-research.com" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
-                            Register Today!
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                </path>
-                            </svg>
-                        </a>
+                                class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
+                                Register Today!
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
                             <div class="mt-4 flex items-center space-x-4">
                                 <img src="logos/ssme_logo.png" alt="CLARA Logo" class="h-16 object-contain">
                             </div>
                             <p class="text-xs font-semibold text-center">In collaboration with University of Oxford.</p>
                         </div>
                     </div>
-        
+
                     <!-- Breathe London Project -->
                     <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">Breathe London Data Access Tool - Python Wrapper</h2>
-                        <p class="mb-6">Simplifies access to Breathe London air quality data, enabling developers to easily integrate this valuable information into their applications without writing complex API logic from scratch.</p>
+                        <h2 class="text-2xl font-bold mb-4 text-center">Breathe London Data Access Tool - Python Wrapper
+                        </h2>
+                        <p class="mb-6">Simplifies access to Breathe London air quality data, enabling developers to
+                            easily integrate this valuable information into their applications without writing complex
+                            API logic from scratch.</p>
                         <div class="flex flex-col items-center space-y-4">
-                            <a href="https://github.com/meg-patakota/breathe_london_data" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
-                            View on GitHub
-                            <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
-                            </svg>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                            </path>
-                        </svg>
-                        </a>
+                            <a href="https://github.com/meg-patakota/breathe_london_data" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
+                                View on GitHub
+                                <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z" />
+                                </svg>
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
                         </div>
-                        <p class="mt-4 text-center">To all those sustainability and data enthusiasts. Feel free to contribute to my repo.</p>
+                        <p class="mt-4 text-center">To all those sustainability and data enthusiasts. Feel free to
+                            contribute to my repo.</p>
                     </div>
-                    
+
                     <!-- Climate Patent Project -->
                     <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">Text Classification with DeBERTa (climate patent domain focused)</h2>
-                        <p class="mb-6">Utilizes the DeBERTa model for classifying patent data into climate change mitigation technologies, as defined by the IPCC (Intergovernmental Panel on Climate Change) classification system.</p>
+                        <h2 class="text-2xl font-bold mb-4 text-center">Text Classification with DeBERTa (climate patent
+                            domain focused)</h2>
+                        <p class="mb-6">Utilizes the DeBERTa model for classifying patent data into climate change
+                            mitigation technologies, as defined by the IPCC (Intergovernmental Panel on Climate Change)
+                            classification system.</p>
                         <div class="flex flex-col items-center space-y-4">
-                            <a href="https://github.com/megpatakota/text_classification_climate_patent" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
-                            View on GitHub
-                            <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
-                            </svg>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                            </path>
-                        </svg>
-                        </a>
+                            <a href="https://github.com/megpatakota/text_classification_climate_patent" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
+                                View on GitHub
+                                <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z" />
+                                </svg>
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
                         </div>
-                        <p class="mt-4 text-center">The tool assists in identifying technologies that contribute to climate change mitigation efforts, leveraging advanced machine learning techniques.</p>
+                        <p class="mt-4 text-center">The tool assists in identifying technologies that contribute to
+                            climate change mitigation efforts, leveraging advanced machine learning techniques.</p>
                     </div>
 
                     <!-- CompanyMatch Project -->
                     <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">CompanyMatch: Intelligent Company Name Reconciliation</h2>
-                        <p class="mb-6">Bridging the gap between diverse company databases and official registries with advanced matching & AI.</p>
+                        <h2 class="text-2xl font-bold mb-4 text-center">CompanyMatch: Intelligent Company Name
+                            Reconciliation</h2>
+                        <p class="mb-6">Bridging the gap between diverse company databases and official registries with
+                            advanced matching & AI.</p>
                         <div class="flex flex-col items-center space-y-4">
                             <div class="flex justify-center">
-                                <button class="bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-lg font-normal cursor-not-allowed">
+                                <button
+                                    class="bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-lg font-normal cursor-not-allowed">
                                     Coming Soon...
                                 </button>
                             </div>
                         </div>
-                        <p class="mt-4 text-center">Enhancing data accuracy for businesses, researchers, and regulatory compliance.</p>
+                        <p class="mt-4 text-center">Enhancing data accuracy for businesses, researchers, and regulatory
+                            compliance.</p>
                     </div>
-                    
+
                     <!-- CompanyMatch Project (Centered) -->
                     <!-- <div class="md:col-span-2 max-w-2xl mx-auto">
                         <div class="project-card bg-white rounded-lg shadow-lg p-8 text-center">
@@ -392,9 +388,10 @@
         </div>
 
         <!-- Technical Skills section -->
-
-        <section id="technicalskills" class="bg-white py-4">
-            <h2 class="text-3xl font-bold text-center mb-10 text-primary">Technical Skills</h2>
+        <section id="technicalskills" class="bg-white py-10">
+            <h2 class="text-3xl font-semi-bold text-center text-primary">Technical Skills</h2>
+            <p class="text-center text-gray-600">Core technical skills</p>
+            <hr class="my-4 border-t-2 border-gray-100">
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto px-4">
                 <div
                     class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
