@@ -1,0 +1,27 @@
+<!-- main.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Page</title>
+</head>
+<body>
+  <h1>Main Page</h1>
+
+  <!-- This is where the section will be loaded -->
+  <div id="section-container"></div>
+
+  <script>
+    // Fetch the content of the section.html and insert it into the div
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('section.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('section-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading the section:', error));
+    });
+  </script>
+</body>
+</html>

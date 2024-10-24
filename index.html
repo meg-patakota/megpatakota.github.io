@@ -65,24 +65,24 @@
         // Initialize dropdown when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', createDropdownMenu);
     </script>
-        <script>
-            // Function to handle showing and hiding the navbar based on scroll direction
-            document.addEventListener('DOMContentLoaded', function () {
-                let lastScrollY = window.scrollY;
-                const header = document.getElementById('header-bar'); // Add ID to the header
-    
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > lastScrollY) {
-                        // Scrolling down
-                        header.classList.add('header-hidden');
-                    } else {
-                        // Scrolling up
-                        header.classList.remove('header-hidden');
-                    }
-                    lastScrollY = window.scrollY;
-                });
+    <script>
+        // Function to handle showing and hiding the navbar based on scroll direction
+        document.addEventListener('DOMContentLoaded', function () {
+            let lastScrollY = window.scrollY;
+            const header = document.getElementById('header-bar'); // Add ID to the header
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY) {
+                    // Scrolling down
+                    header.classList.add('header-hidden');
+                } else {
+                    // Scrolling up
+                    header.classList.remove('header-hidden');
+                }
+                lastScrollY = window.scrollY;
             });
-        </script>
+        });
+    </script>
     <style>
         body {
             margin: 0;
@@ -181,8 +181,9 @@
         .show {
             display: block;
         }
-               /* Hiding the header when scrolling */
-               .header-hidden {
+
+        /* Hiding the header when scrolling */
+        .header-hidden {
             transform: translateY(-100%);
             transition: transform 0.3s ease-in-out;
         }
@@ -190,23 +191,27 @@
 </head>
 
 <!-- Enhanced Heading Bar -->
-    <!-- Enhanced Heading Bar -->
-    <div id="header-bar" class="bg-gradient-to-r from-gray-10 to-gray-10 py-3 px-6 fixed top-0 left-0 w-full z-50 shadow-sm">
-        <nav class="flex space-x-6 items-center">
-            <a href="#projects" class="text-gray-800 hover:text-secondary text-secondary duration-300 ease-in-out">Projects</a>
-            <a href="#technicalskills" class="text-gray-800 hover:text-secondary text-secondary transition duration-300 ease-in-out">Skills</a>
-        </nav>
-    </div>
+<div id="header-bar"
+    class="bg-gradient-to-r from-gray-10 to-gray-10 py-3 px-6 fixed top-0 left-0 w-full z-50 shadow-sm">
+    <nav class="flex space-x-6 items-center">
+        <a href="#projects"
+            class="text-gray-800 hover:text-secondary text-secondary duration-300 ease-in-out">Projects</a>
+        <a href="#technicalskills"
+            class="text-gray-800 hover:text-secondary text-secondary transition duration-300 ease-in-out">Skills</a>
+    </nav>
+</div>
 
 <style>
     /* Adjust spacing for content when navbar is fixed */
     body {
-        padding-top: 60px; /* Adjust this value to match the height of the navbar */
+        padding-top: 60px;
+        /* Adjust this value to match the height of the navbar */
     }
-    
+
     /* Hover effect for links */
     a:hover {
-        transform: translateY(-2px); /* Subtle lift on hover */
+        transform: translateY(-2px);
+        /* Subtle lift on hover */
     }
 </style>
 
@@ -253,27 +258,27 @@
             <div class="rounded-lg p-8 w-full max-w-4xl mx-auto text-left">
                 <ul class="space-y-4 text-gray-800 py-10">
                     <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">About Me</h3>
-            
+
                     <li class="flex items-center">
                         <i class="fas fa-chart-line text-accent mr-2"></i>
                         <span><span class="font-semibold text-secondary">Data Scientist & AI Researcher</span></span>
                     </li>
-            
+
                     <li class="flex items-center">
                         <i class="fas fa-robot text-accent mr-2"></i>
                         <span>Expert in AI and machine learning.</span>
                     </li>
-            
+
                     <li class="flex items-center">
                         <i class="fas fa-database text-accent mr-2"></i>
                         <span>End-to-end data pipeline builder.</span>
                     </li>
-            
+
                     <li class="flex items-center">
                         <i class="fas fa-globe text-accent mr-2"></i>
                         <span>Strong interest for sustainability & AI.</span>
                     </li>
-            
+
                     <li class="flex items-center">
                         <i class="fas fa-lightbulb text-accent mr-2"></i>
                         <span>Passionate about data-driven solutions.</span>
@@ -285,189 +290,9 @@
 
 
         <!-- Projects section -->
-        <section id="projects" class="py-0">
-            <h2 class="text-3xl font-semi-bold text-center text-primary">Projects</h2>
-            <p class="text-center text-gray-600">Present and historic projects.</p>
-            <hr class="my-4 border-t-2 border-gray-100">
-            <div class="container mx-auto px-6 py-5">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- CLARA Project -->
-                    <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">CLARA: CLimate Accountability Research Assistant
-                        </h2>
-                        <p class="mb-6">Uses the power of AI to support in climate research. The tool for academics,
-                            litigators and climate enthusiasts.</p>
-                        <div class="flex flex-col items-center space-y-4">
-                            <a href="https://clara-research.com" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
-                                Register Today!
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                            <div class="mt-4 flex items-center space-x-4">
-                                <img src="logos/ssme_logo.png" alt="CLARA Logo" class="h-16 object-contain">
-                            </div>
-                            <p class="text-xs font-semibold text-center">In collaboration with University of Oxford.</p>
-                        </div>
-                    </div>
+        <div id="projects-container"></div>
 
-                    <!-- Breathe London Project -->
-                    <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">Breathe London Data Access Tool - Python Wrapper
-                        </h2>
-                        <p class="mb-6">Simplifies access to Breathe London air quality data, enabling developers to
-                            easily integrate this valuable information into their applications without writing complex
-                            API logic from scratch.</p>
-                        <div class="flex flex-col items-center space-y-4">
-                            <a href="https://github.com/meg-patakota/breathe_london_data" target="_blank"
-                                rel="noopener noreferrer"
-                                class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
-                                View on GitHub
-                                <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z" />
-                                </svg>
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                        </div>
-                        <p class="mt-4 text-center">To all those sustainability and data enthusiasts. Feel free to
-                            contribute to my repo.</p>
-                    </div>
-
-                    <!-- Climate Patent Project -->
-                    <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">Text Classification with DeBERTa (climate patent
-                            domain focused)</h2>
-                        <p class="mb-6">Utilizes the DeBERTa model for classifying patent data into climate change
-                            mitigation technologies, as defined by the IPCC (Intergovernmental Panel on Climate Change)
-                            classification system.</p>
-                        <div class="flex flex-col items-center space-y-4">
-                            <a href="https://github.com/megpatakota/text_classification_climate_patent" target="_blank"
-                                rel="noopener noreferrer"
-                                class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full text-lg font-normal transition duration-300 ease-in-out hover:bg-opacity-90 hover:transform hover:-translate-y-1">
-                                View on GitHub
-                                <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z" />
-                                </svg>
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                            </a>
-                        </div>
-                        <p class="mt-4 text-center">The tool assists in identifying technologies that contribute to
-                            climate change mitigation efforts, leveraging advanced machine learning techniques.</p>
-                    </div>
-
-                    <!-- CompanyMatch Project -->
-                    <div class="project-card bg-white rounded-lg shadow-lg p-8">
-                        <h2 class="text-2xl font-bold mb-4 text-center">CompanyMatch: Intelligent Company Name
-                            Reconciliation</h2>
-                        <p class="mb-6">Bridging the gap between diverse company databases and official registries with
-                            advanced matching & AI.</p>
-                        <div class="flex flex-col items-center space-y-4">
-                            <div class="flex justify-center">
-                                <button
-                                    class="bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-lg font-normal cursor-not-allowed">
-                                    Coming Soon...
-                                </button>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-center">Enhancing data accuracy for businesses, researchers, and regulatory
-                            compliance.</p>
-                    </div>
-
-                    <!-- CompanyMatch Project (Centered) -->
-                    <!-- <div class="md:col-span-2 max-w-2xl mx-auto">
-                        <div class="project-card bg-white rounded-lg shadow-lg p-8 text-center">
-                            <h2 class="text-2xl font-bold mb-4 text-center">CompanyMatch: Intelligent Company Name Reconciliation</h2>
-                            <p class="mb-6">Bridging the gap between diverse company databases and official registries with advanced matching & AI.</p>
-                            <div class="flex justify-center">
-                                <button class="bg-gray-200 text-gray-700 px-6 py-3 rounded-full text-lg font-normal cursor-not-allowed">
-                                    Coming Soon...
-                                </button>
-                            </div>
-                            <p class="mt-4">Enhancing data accuracy for businesses, researchers, and regulatory compliance.</p>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-        </section>
-        </div>
-        </div>
-
-        <!-- Technical Skills section -->
-        <section id="technicalskills" class="bg-white py-10">
-            <h2 class="text-3xl font-semi-bold text-center text-primary">Technical Skills</h2>
-            <p class="text-center text-gray-600">Core technical skills</p>
-            <hr class="my-4 border-t-2 border-gray-100">
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto px-4">
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fab fa-python text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">Python</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-chart-bar text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">Power BI</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-database text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">SQL</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fab fa-microsoft text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">Synapse Analytics</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fab fa-aws text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">AWS Cloud Services</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fab fa-git-alt text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">Git</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-brain text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">Machine Learning</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-language text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">NLP</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-robot text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">AI</h3>
-                </div>
-                <div
-                    class="bg-gray-100 rounded-lg p-3 text-center transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                    <i class="fas fa-network-wired text-3xl text-accent mb-2"></i>
-                    <h3 class="text-sm text-primary">Network Analytics</h3>
-                </div>
-            </div>
-        </section>
+        <div id="technical-skills-container"></div>
 
         <section id="get-in-touch" class="py-5 bg-gradient-to-r from-primary to-secondary">
             <div class="container mx-auto px-4 text-center">
@@ -490,6 +315,51 @@
         <footer class="text-center py-4 bg-primary text-white">
             <p>&copy; 2024 Meg Patakota. All rights reserved.</p>
         </footer>
+        <!-- JavaScript to load technical-skills.html -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Fetch the technical skills section and inject it into the container
+                fetch('technical-skills.html')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        document.getElementById('technical-skills-container').innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Error loading technical skills section:', error);
+                        document.getElementById('technical-skills-container').innerHTML =
+                            '<p style="color:red;">Failed to load technical skills section.</p>';
+                    });
+            });
+        </script>
+
+        <!-- JavaScript to load projects.html -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Fetch the technical skills section and inject it into the container
+                fetch('projects.html')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        document.getElementById('projects-container').innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Error loading projects skills section:', error);
+                        document.getElementById('projects-container').innerHTML =
+                            '<p style="color:red;">Failed to load projects skills section.</p>';
+                    });
+            });
+        </script>
+
+
         <script src="script.js"></script>
 </body>
 
