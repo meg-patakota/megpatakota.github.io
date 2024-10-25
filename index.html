@@ -2,365 +2,149 @@
 <html lang="en">
 
 <head>
-    <script>
-        (function (n, i, v, r, s, c, x, z) { x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c }; window[n] = function (c, p) { x.q.push({ c: c, p: p }); }; z = document.createElement('script'); z.async = true; z.src = s; document.head.insertBefore(z, document.head.getElementsByTagName('script')[0]); })(
-            'cwr',
-            '1d5ae548-1e85-46f2-b42e-8b15f35e5d9a',
-            '1.0.0',
-            'eu-west-2',
-            'https://client.rum.us-east-1.amazonaws.com/1.18.0/cwr.js',
-            {
-                sessionSampleRate: 1,
-                identityPoolId: "eu-west-2:c8ce8bbc-733d-4668-a5b2-4810c92dee69",
-                endpoint: "https://dataplane.rum.eu-west-2.amazonaws.com",
-                telemetries: ["performance", "errors", "http"],
-                allowCookies: true,
-                enableXRay: false
-            }
-        );
-    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meg Patakota - Data Science & Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Import -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="icon" type="image/png" href="logos/profile.jpeg">
+    <!-- Tailwind CSS Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#005f73',
-                        secondary: '#005273',
-                        accent: '#005f73',
-                        text_color: '#333333',
-                        bg: '#005f73',
-                        highlight: '#83677B',
-                    }
-                }
-            }
-        }
-    </script>
-    <script>
-        // Dropdown menu functionality
-        function createDropdownMenu() {
-            const dropBtn = document.getElementById('dropbtn');
-            const dropdownContent = document.getElementById('myDropdown');
-
-            // Toggle dropdown visibility on button click
-            dropBtn.addEventListener('click', function (event) {
-                event.stopPropagation(); // Stop the event from bubbling up
-                dropdownContent.classList.toggle('show');
-            });
-
-            // Close the dropdown when clicking outside of it
-            document.addEventListener('click', function (event) {
-                if (!dropBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
-                    dropdownContent.classList.remove('show');
-                }
-            });
-        }
-
-        // Initialize dropdown when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', createDropdownMenu);
-    </script>
-    <script>
-        // Function to handle showing and hiding the navbar based on scroll direction
-        document.addEventListener('DOMContentLoaded', function () {
-            let lastScrollY = window.scrollY;
-            const header = document.getElementById('header-bar'); // Add ID to the header
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > lastScrollY) {
-                    // Scrolling down
-                    header.classList.add('header-hidden');
-                } else {
-                    // Scrolling up
-                    header.classList.remove('header-hidden');
-                }
-                lastScrollY = window.scrollY;
-            });
-        });
-    </script>
+    <script src="site-style-config.js"></script>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Georgia', serif;
-        }
-
-        .header-hidden {
-            transform: translateY(-100%);
-        }
-
         #hero {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 30%;
-            height: 100vh;
-            overflow-y: auto;
-            background-color: #f5f5f5;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        #main-content {
-            margin-left: 30%;
-            width: 70%;
-            overflow-y: auto;
-            height: auto;
-            padding: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                display: flex;
-                flex-direction: column;
-            }
-
-            #hero {
-                position: relative;
-                width: 100%;
-                height: auto;
-            }
-
-            #main-content {
-                margin-left: 0;
-                width: 100%;
-            }
-        }
-
-        /* New styles for the dropdown menu */
-        .dropdown {
             position: relative;
-            display: inline-block;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
+            overflow: hidden;
+            min-height: 500px;
+            /* Ensure minimum height for visibility */
         }
 
-        .dropbtn {
-            background-color: #005f73;
-            color: white;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .dropdown-content {
-            display: none;
+        #hero-canvas {
             position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border-radius: 4px;
-            top: 50px;
+            top: 0;
             left: 0;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .show {
-            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            /* Place canvas above the background but below content */
+            pointer-events: none;
+            /* Allow clicks to pass through */
         }
 
         /* Hiding the header when scrolling */
         .header-hidden {
             transform: translateY(-100%);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.1s ease-in-out;
         }
     </style>
 </head>
 
-<!-- Enhanced Heading Bar -->
-<div id="header-bar"
-    class="bg-gradient-to-r from-gray-10 to-gray-10 py-3 px-6 fixed top-0 left-0 w-full z-50 shadow-sm">
-    <nav class="flex space-x-6 items-center">
-        <a href="#projects"
-            class="text-gray-800 hover:text-secondary text-secondary duration-300 ease-in-out">Projects</a>
-        <a href="#technicalskills"
-            class="text-gray-800 hover:text-secondary text-secondary transition duration-300 ease-in-out">Skills</a>
-    </nav>
-</div>
+<body class="bg-buttons_text text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-header text-primary py-4 fixed top-0 w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold tracking-wide text-header_text">Meghana Patakota</h1>
+            <ul class="flex space-x-8 text-lg text-header_text">
+                <!-- <li><a href="#about" class="hover:text-accent">About</a></li> -->
+                <li><a href="#projects" class="hover:text-primary">Projects</a></li>
+                <li><a href="#blogs" class="hover:text-primary">Blog Posts</a></li>
+                <li><a href="#technicalskills" class="hover:text-primary">Skills</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<style>
-    /* Adjust spacing for content when navbar is fixed */
-    body {
-        padding-top: 60px;
-        /* Adjust this value to match the height of the navbar */
-    }
+    <!-- Hero Section -->
+    <section id="hero" class="relative mt-20 py-16">
+        <canvas id="hero-canvas"></canvas>
+        <!-- Background image with low opacity overlay -->
+        <div class="absolute inset-0 bg-primary opacity-100"></div>
+        <div class="absolute inset-0 bg-cover"
+            style="background-image: url('./logos/header_image.png'); opacity: 0.4; background-position: 30% 20%;"></div>
 
-    /* Hover effect for links */
-    a:hover {
-        transform: translateY(-2px);
-        /* Subtle lift on hover */
-    }
-</style>
+        <!-- Content with new font and styles -->
+        <div class="container relative mx-auto text-center z-10 mt-12">
+            <h2 class="text-3xl font-bold text-key_info_text mb-6">Principal Data Scientist, Mishcon De Reya</h2>
+            <h2 class="text-3xl font-bold text-key_info_text mb-6">AI Researcher, University of Oxford</h2>
+            <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer" class="w-1/2">
+                <button id="collaborate-button" class="inline-flex items-center justify-center bg-buttons text-buttons_text py-4 px-4 
+                        rounded-full text-lg transition-all duration-300 ease-in-out border-none 
+                        cursor-pointer w-2/5 hover:bg-secondary">
+                    <span>Let's Collaborate</span>
+                    <i class="fas fa-handshake ml-4"></i>
+                </button>
+            </a>
 
-
-<body>
-    <section id="hero">
-        <canvas id="hero-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
-        <div style="position: relative; z-index: 4; text-align: center; padding-left: 1rem;padding-top: 7rem; ">
-            <!-- <div class="mt-4 flex justify-center items-center">
-                <img src="logos/profile.jpeg" alt="Meg's Profile" class="h-72 w-82 object-contain">
-            </div> -->
-            <h1 style="font-size: 2.25rem; font-weight: semi-bold; margin-bottom: 1rem; ">Meghana(Meg) Patakota</h1>
-            <h2 style="font-size: 1.2rem; margin-bottom: 0.9rem; font-weight: normal;">
-                Principal Data Scientist, <span style="font-weight: normal;  font-style: italic;">Mishcon de Reya</span>
-            </h2>
-            <h2 style="font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: normal;">
-                AI Researcher, <span style="font-weight: normal; font-style: italic;">University of Oxford</span>
-            </h2>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+            <div class="flex justify-center gap-6 mt-10">
                 <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
-                    style="width: 50%;">
-                    <button id="collaborate-button"
-                        style="display: inline-flex; align-items: center; justify-content: center; background-color: #005f73; color: white; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 1rem; transition: all 0.3s ease; border: none; cursor: pointer; width: 100%;">
-                        <span>Let's Collaborate</span>
-                        <i class="fas fa-handshake" style="margin-left: 0.5rem;"></i>
-                    </button>
-                </a>
-            </div>
-            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
-                <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
-                    aria-label="LinkedIn" style="color: #14213d; transition: color 0.3s ease;">
-                    <i class="fab fa-linkedin" style="font-size: 2.5rem;"></i>
+                    aria-label="LinkedIn"
+                    class="bg-buttons_text text-buttons hover:bg-buttons hover:text-buttons_text transition duration-300 ease-in-out p-4 rounded-full">
+                    <i class="fab fa-linkedin text-2xl"></i>
                 </a>
                 <a href="mailto:megpatakota@icloud.com" aria-label="Email"
-                    style="color: #14213d; transition: color 0.3s ease;">
-                    <i class="fas fa-envelope" style="font-size: 2.5rem;"></i>
+                    class="bg-buttons_text text-buttons hover:bg-buttons hover:text-buttons_text transition duration-300 ease-in-out p-4 rounded-full">
+                    <i class="fas fa-envelope text-2xl"></i>
                 </a>
                 <a href="https://github.com/megpatakota" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                    style="color: #14213d; transition: color 0.3s ease;">
-                    <i class="fab fa-github" style="font-size: 2.5rem;"></i>
+                    class="bg-buttons_text text-buttons hover:bg-buttons hover:text-buttons_text transition duration-300 ease-in-out p-4 rounded-full">
+                    <i class="fab fa-github text-2xl"></i>
                 </a>
             </div>
-
-            <div class="rounded-lg p-8 w-full max-w-4xl mx-auto text-left">
-                <ul class="space-y-4 text-gray-800 py-10">
-                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">About Me</h3>
-
-                    <li class="flex items-center">
-                        <i class="fas fa-chart-line text-accent mr-2"></i>
-                        <span><span class="font-semibold text-secondary">Data Scientist & AI Researcher</span></span>
-                    </li>
-
-                    <li class="flex items-center">
-                        <i class="fas fa-robot text-accent mr-2"></i>
-                        <span>Expert in AI and machine learning.</span>
-                    </li>
-
-                    <li class="flex items-center">
-                        <i class="fas fa-database text-accent mr-2"></i>
-                        <span>End-to-end data pipeline builder.</span>
-                    </li>
-
-                    <li class="flex items-center">
-                        <i class="fas fa-globe text-accent mr-2"></i>
-                        <span>Strong interest for sustainability & AI.</span>
-                    </li>
-
-                    <li class="flex items-center">
-                        <i class="fas fa-lightbulb text-accent mr-2"></i>
-                        <span>Passionate about data-driven solutions.</span>
-                    </li>
-                </ul>
-            </div>
+        </div>
     </section>
-    <main id="main-content" class="mt-[10px]"> <!-- Adjust this value as needed -->
 
-
-        <!-- Projects section -->
+    <!-- Projects Section -->
+    <section class="bg-gray-200 py-8">
         <div id="projects-container"></div>
+    </section>
 
-        <div id="technical-skills-container"></div>
-
-        <section id="get-in-touch" class="py-5 bg-gradient-to-r from-primary to-secondary">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-2xl font-bold text-white mb-4">Get in Touch</h2>
-                <p class="text-sm text-white mb-6">Ready to collaborate or have a question? I'd love to hear from you!
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="mailto:megpatakota@icloud.com"
-                        class="inline-block bg-white text-primary font-bold py-2 px-6 rounded-full text-sm hover:bg-opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                        <i class="fas fa-envelope mr-2"></i> Email Me
-                    </a>
-                    <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
-                        class="inline-block bg-[#0077B5] text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
-                        <i class="fab fa-linkedin mr-2"></i> Connect on LinkedIn
-                    </a>
-                </div>
+    <!-- Blogs Section -->
+    <section id="blogs" class="bbg-gray-200 py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl text-center text-primary ">Blog Posts</h2>
+            <p class="text-center text-gray-600">Follow medium for more!</p>
+            <hr class="my-4 border-t-2 border-gray-100">
+            <div id="blogs-container" class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Blog articles will be dynamically inserted here -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer class="text-center py-4 bg-primary text-white">
-            <p>&copy; 2024 Meg Patakota. All rights reserved.</p>
-        </footer>
-        <!-- JavaScript to load technical-skills.html -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Fetch the technical skills section and inject it into the container
-                fetch('technical-skills.html')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        document.getElementById('technical-skills-container').innerHTML = data;
-                    })
-                    .catch(error => {
-                        console.error('Error loading technical skills section:', error);
-                        document.getElementById('technical-skills-container').innerHTML =
-                            '<p style="color:red;">Failed to load technical skills section.</p>';
-                    });
-            });
-        </script>
+    <!-- Technical Skills Section -->
+    <section class="bg-gray-200 py-8">
+        <div id="technical-skills-container"></div>
+    </section>
 
-        <!-- JavaScript to load projects.html -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Fetch the technical skills section and inject it into the container
-                fetch('projects.html')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        document.getElementById('projects-container').innerHTML = data;
-                    })
-                    .catch(error => {
-                        console.error('Error loading projects skills section:', error);
-                        document.getElementById('projects-container').innerHTML =
-                            '<p style="color:red;">Failed to load projects skills section.</p>';
-                    });
-            });
-        </script>
+    <!-- Footer -->
+    <section id="get-in-touch" class="py-5 bg-gradient-to-r from-primary to-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-white mb-4">Get in Touch</h2>
+            <p class="text-sm text-white mb-6">Ready to collaborate or have a question? I'd love to hear from you!
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:megpatakota@icloud.com"
+                    class="inline-block bg-white text-primary font-bold py-2 px-6 rounded-full text-sm hover:bg-opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
+                    <i class="fas fa-envelope mr-2"></i> Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer"
+                    class="inline-block bg-[#0077B5] text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-opacity-90 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">
+                    <i class="fab fa-linkedin mr-2"></i> Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer id="contact" class="bg-gray-900 text-primary py-2">
+        <div class="container mx-auto text-center">
+            <!-- <p class="text-lg">Ready to collaborate? <a href="mailto:info@consultus.com"
+                    class="text-primary font-bold">Contact us!</a></p> -->
+            <p class="mt-1">&copy; 2024 Meg Patakota. All rights reserved.</p>
+        </div>
 
-
-        <script src="script.js"></script>
+    </footer>
+    <script src="content-loader.js"></script>
+    <script src="blogs-loader.js"></script>
+    <script src="animations.js"></script>
+    
 </body>
 
 </html>
