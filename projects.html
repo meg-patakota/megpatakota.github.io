@@ -1,66 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
-
-    <!-- Font Awesome Import -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- Tailwind CSS Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="site-style-config.js"></script>
     <style>
-        #hero {
+        .scroll-container {
             position: relative;
-            overflow: hidden;
-            min-height: 500px;
-            /* Ensure minimum height for visibility */
+            width: 100%;
+            /* max-width: 1200px; */
+            margin: 0 auto;
+            padding: 0 3rem;
         }
 
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            /* Place canvas above the background but below content */
-            pointer-events: none;
-            /* Allow clicks to pass through */
+        .projects-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .projects-scroll {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem 0;
+        }
+
+        .projects-scroll::-webkit-scrollbar {
+            display: none;
         }
 
         .project-card {
-            background-color: var(--bg-project_box);
+            flex: 0 0 auto;
+            width: 350px;
+            background-color: white;
             border-radius: 0.5rem;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
-            min-width: 200px;
-            max-width: 450px;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         .project-card:hover {
-            transform: translateY(-0.5rem) scale(1.05);
-            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-0.5rem);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         }
+
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border: none;
+            outline: none;
+        }
+
+        /* .scroll-button:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        } */
+
+        /* .scroll-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        } */
+
+        .scroll-button.left {
+            left: 0;
+        }
+
+        .scroll-button.right {
+            right: 0;
+        }
+
+        /* .fade-edge {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 3rem;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .fade-edge.left {
+            left: 0;
+            background: linear-gradient(to right, white, transparent);
+        }
+
+        .fade-edge.right {
+            right: 0;
+            background: linear-gradient(to left, white, transparent);
+        } */
     </style>
 </head>
+<section id="projects" class="bg-white py-5">
+    <h2 class="text-4xl text-center text-primary ">Projects</h2>
+    <p class="text-center text-gray-600">Current and Historic Projects</p>
+    <hr class="my-4 border-t-2 border-gray-100">
+</section>
+<body class="bg-gray-100">
+    <section class="py-1">
+        <div class="scroll-container">
+            <div class="projects-wrapper">
+                <!-- Fade edges -->
+                <div class="fade-edge left"></div>
+                <div class="fade-edge right"></div>
 
-<body>
-    <section id="projects" class="bg-white py-5">
-        <h2 class="text-4xl text-center text-primary ">Projects</h2>
-        <p class="text-center text-gray-600">Current and Historic Projects</p>
-        <hr class="my-4 border-t-2 border-gray-100">
-    </section>
-    
+                <!-- Scroll buttons -->
+                <button class="scroll-button left" id="scrollLeft" aria-label="Scroll left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="scroll-button right" id="scrollRight" aria-label="Scroll right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
 
-    <section id="projects" class="py-0 bg-buttons_text">
-        <div class="container mx-auto overflow-x-auto">
-            <div class="flex space-x-8 w-max">
+                <!-- Projects container -->
+                <div class="projects-scroll" id="projectsContainer">
                 <!-- CLARA Project -->
                 <div
                     class="project-card bg-project_box rounded-lg shadow-lg p-8 min-w-[200px] max-w-[450px]">
@@ -193,7 +263,55 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('projectsContainer');
+            const leftButton = document.getElementById('scrollLeft');
+            const rightButton = document.getElementById('scrollRight');
+            const scrollAmount = 400; // Adjust this value to control scroll distance
 
+            function updateScrollButtons() {
+                const scrollLeft = container.scrollLeft;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                
+                leftButton.disabled = scrollLeft <= 0;
+                rightButton.disabled = scrollLeft >= maxScroll;
+            }
+
+            // Initial button state
+            updateScrollButtons();
+
+            // Scroll buttons click handlers
+            leftButton.addEventListener('click', () => {
+                container.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            rightButton.addEventListener('click', () => {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Update button states on scroll
+            container.addEventListener('scroll', updateScrollButtons);
+
+            // Update button states on window resize
+            window.addEventListener('resize', updateScrollButtons);
+
+            // Optional: Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && !leftButton.disabled) {
+                    leftButton.click();
+                } else if (e.key === 'ArrowRight' && !rightButton.disabled) {
+                    rightButton.click();
+                }
+            });
+        });
+    </script>
 
 
 </body>
