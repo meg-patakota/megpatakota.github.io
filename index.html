@@ -44,14 +44,29 @@
 <!-- Header -->
 <header class="bg-header text-primary py-3 md:py-5 fixed top-0 w-full z-50">
     <nav class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl md:text-3xl font-bold tracking-wide text-header_text">Meghana Patakota</h1>
-        <ul class="flex space-x-4 md:space-x-8 text-sm md:text-lg text-header_text">
-            <li><a href="#projects" class="hover:text-primary">Projects</a></li>
-            <li><a href="#blogs" class="hover:text-primary">Blog</a></li>
-            <li><a href="#technicalskills" class="hover:text-primary">Skills</a></li>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-wide text-header_text">
+            Meghana Patakota
+        </h1>
+        <ul class="flex space-x-2 md:space-x-4  font-semibold text-sm md:text-sm text-header_text">
+            <li>
+                <a href="#projects" class="px-3 py-2 rounded-md transition duration-300 hover:shadow-md">
+                    Projects
+                </a>
+            </li>
+            <li>
+                <a href="#blogs" class="px-3 py-2 rounded-md transition duration-300 hover:shadow-md">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="#technicalskills" class="px-3 py-2 rounded-md transition duration-300 hover:shadow-md">
+                    Skills
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
+
 
 
     <!-- Hero Section -->
@@ -69,7 +84,7 @@
             <a href="https://www.linkedin.com/in/megpatakota/" target="_blank" rel="noopener noreferrer" class="w-1/2">
                 <button id="collaborate-button" class="inline-flex items-center justify-center bg-buttons text-buttons_text py-4 px-4 
                         rounded-full text-lg transition-all duration-300 ease-in-out border-none 
-                        cursor-pointer w-2/5 hover:bg-secondary">
+                        cursor-pointer w-2/5 hover:bg-hover_color">
                     <span>Let's Collaborate</span>
                     <i class="fas fa-handshake ml-4"></i>
                 </button>
@@ -97,6 +112,7 @@
     <section class="bg-gray-200 py-8">
         <div id="projects-container"></div>
     </section>
+    
 
     <!-- Blogs Section -->
     <section id="blogs" class="bbg-gray-200 py-8">
@@ -141,9 +157,11 @@
         </div>
 
     </footer>
+    <!-- Include scripts in the correct order -->
+    <script src="animations.js"></script>
     <script src="content-loader.js"></script>
     <script src="blogs-loader.js"></script>
-    <script src="animations.js"></script>
+    
     
 </body>
 

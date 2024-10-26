@@ -2,10 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     loadContent('technical-skills.html', 'technical-skills-container');
-    loadContent('projects.html', 'projects-container');
+    loadContent('projects.html', 'projects-container', initializeProjectScroll);
 });
 
-function loadContent(file, containerId) {
+function loadContent(file, containerId, callback) {
     fetch(file)
         .then(response => {
             if (!response.ok) {
@@ -15,6 +15,10 @@ function loadContent(file, containerId) {
         })
         .then(data => {
             document.getElementById(containerId).innerHTML = data;
+            // Call the callback function if provided
+            if (callback && typeof callback === 'function') {
+                callback();
+            }
         })
         .catch(error => {
             console.error(`Error loading ${file}:`, error);

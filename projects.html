@@ -263,56 +263,7 @@
             </div>
         </div>
     </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.getElementById('projectsContainer');
-            const leftButton = document.getElementById('scrollLeft');
-            const rightButton = document.getElementById('scrollRight');
-            const scrollAmount = 400; // Adjust this value to control scroll distance
-
-            function updateScrollButtons() {
-                const scrollLeft = container.scrollLeft;
-                const maxScroll = container.scrollWidth - container.clientWidth;
-                
-                leftButton.disabled = scrollLeft <= 0;
-                rightButton.disabled = scrollLeft >= maxScroll;
-            }
-
-            // Initial button state
-            updateScrollButtons();
-
-            // Scroll buttons click handlers
-            leftButton.addEventListener('click', () => {
-                container.scrollBy({
-                    left: -scrollAmount,
-                    behavior: 'smooth'
-                });
-            });
-
-            rightButton.addEventListener('click', () => {
-                container.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            });
-
-            // Update button states on scroll
-            container.addEventListener('scroll', updateScrollButtons);
-
-            // Update button states on window resize
-            window.addEventListener('resize', updateScrollButtons);
-
-            // Optional: Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft' && !leftButton.disabled) {
-                    leftButton.click();
-                } else if (e.key === 'ArrowRight' && !rightButton.disabled) {
-                    rightButton.click();
-                }
-            });
-        });
-    </script>
-
+    <script src="animations.js"></script>
 
 </body>
 

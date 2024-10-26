@@ -14,6 +14,8 @@ tailwind.config = {
                 buttons_text: '#ffffff',
                 primary_text: '#f7f1de',
                 text_color: '#333333',
+                hover_color: '#002c3d',
+                hover_text: '#002c3d',
                 bg: '#005f73',               // Dark navy background for depth and contrast
                 header_text: '#005f73',       // Warm, muted orange for header text accents
             }
