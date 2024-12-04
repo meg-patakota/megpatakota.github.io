@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     injectBlogsStyles();
 
     const blogContainer = document.getElementById('blogs-container');
-    const articles = await fetchMediumArticles('meg.patakota'); // Replace with your Medium username
+    const articles = await fetchMediumArticles('megpatakota'); // Replace with your Medium username
 
     if (articles.length) {
         // Create the necessary DOM structure for horizontal scrolling
